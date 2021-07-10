@@ -2,20 +2,16 @@
 #
 # Prints local weather information for the MOTD
 
+# defaults
 city="Bloomington, IN"
 ICAO="KBMG"
-while getopts 'v' flag; do
-  case "${flag}" in
-    v) mode="verbose" ;;    # comparatively verbose
-    *) mode="home" ;;
-  esac
-done
 
+# weather report
 echo "Current conditions in ${city} (${ICAO}):"
-if [[ $mode != "report" ]]; then
-  weather $ICAO
-else
+if [[ $# == 0 ]]; then
   weather -q $ICAO
+else
+  weather $1 $ICAO
 fi
 
 echo
