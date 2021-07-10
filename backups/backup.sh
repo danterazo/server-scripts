@@ -4,9 +4,8 @@ start_time=$SECONDS
 
 ## input / arguments
 plex_compression=0
-while getopts 'qm:' flag; do
+while getopts 'm:' flag; do
   case "${flag}" in
-    q) plex_compression=0 ;;			# -q. flag skips 7z compression of Plex appdata for quicker backups. deprecated / redundant now
     m) plex_compression="${OPTARG}" ;;	# -m <mx level>. arg sets specific compression level
     *) exit 1 ;;
   esac
