@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# Prints local weather information for the MOTD
-
-# Bloomington, IN
-echo "Current conditions in Bloomington, IN (KBMG):"
-weather -q KBMG
-echo
