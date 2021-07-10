@@ -3,13 +3,7 @@
 start_time=$SECONDS
 
 ## input / arguments
-plex_compression=0
-while getopts 'm:' flag; do
-  case "${flag}" in
-    m) plex_compression="${OPTARG}" ;;	# -m <mx level>. arg sets specific compression level
-    *) exit 1 ;;
-  esac
-done
+plex_compression=${1:-0}
 
 ## common variables for all files
 datetime=`date +"%Y-%m-%d_%H-%M-%S"`
@@ -28,7 +22,11 @@ yellow="\033[1;33m"
 nocolor="\033[0m"
 
 ## funny goat + stop Plex
-echo -e "Running backups. ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 60
+if [ $plex_compression -eq 0 ]; then
+  echo -e "Running backups (tar mode). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
+else
+  echo -e "Running backups (${orange}mx=${plex_compression}${nocolor}). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
+fi
 sudo service plexmediaserver stop
 
 ## prep working dirs (recreate, remove residuals)
