@@ -2,8 +2,6 @@
 ### script to restore Plex to last backup state
 
 ## input / arguments
-backup_datetime=$1
-
 plex_compression=9
 while getopts 'd:m:t' flag; do
   case "${flag}" in
