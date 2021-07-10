@@ -28,7 +28,7 @@ This is a set of _very_ specific scripts for my personal NAS, dubbed "[Starálfu
   - Retrieves specified (hardcoded) Plex Media Server executable, installs it, enables service, verifies service status, then removes executable
 
 ### Fun Scripts
-- `local-weather` (alias: `lweather`)
+- `local_weather.sh` (alias: `lweather`)
   - Used primarily in my Message of the Day (MOTD). Prints a concise weather report for Bloomington, IN (ICAO: KBMG)
   - Optional verbose (`v`) flag to return slightly longer weather report
 
