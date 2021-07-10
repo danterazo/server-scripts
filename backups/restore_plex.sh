@@ -16,7 +16,7 @@ done
 
 ## common variables
 bar_length=80
-backup_dir="/media/sg01/custom"
+backup_dir="/media/sg01/snapshots"
 tmp_dir="/tmp"
 
 # colors
