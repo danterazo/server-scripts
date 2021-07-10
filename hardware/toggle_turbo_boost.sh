@@ -74,7 +74,7 @@ if [[ $mode != "report" ]]; then
     fi
     echo
 else
-    echo -n "Turbo Boost Status: "
+    echo -e -n "\nTurbo Boost Status: "
     if [[ $curr_turbo_state -eq $disabled_state ]]; then
         echo -e "${red}Disabled${nocolor}"
     elif [[ $curr_turbo_state -eq $enabled_state ]]; then
