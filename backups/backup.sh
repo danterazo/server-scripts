@@ -3,7 +3,7 @@
 start_time=$SECONDS
 
 ## input / arguments
-plex_compression=${1:-0}
+plex_compression=${1:-0}	# default: 0
 
 ## common variables for all files
 datetime=`date +"%Y-%m-%d_%H-%M-%S"`
