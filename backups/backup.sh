@@ -21,13 +21,16 @@ orange="\033[0;33m"
 yellow="\033[1;33m"
 nocolor="\033[0m"
 
-## funny goat + stop Plex
+## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then
   echo -e "Running backups (tar mode). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
 else
   echo -e "Running backups (${orange}mx=${plex_compression}${nocolor}). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
 fi
 sudo service plexmediaserver stop
+
+## sudo timeout trick
+while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ## prep working dirs (recreate, remove residuals)
 echo -e "Preparing working directories..."
@@ -79,7 +82,8 @@ echo -e "${green}Plex appdata directory analyzed!${nocolor}\n"
 echo "Creating Plex tarball..."
 echo -e -n "Estimated: [`printf %${bar_length}s |tr ' ' '='`] (Estimate: $((plex_appdata_size / bar_constant)) MB)\nProgress:  ["
 sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${plex_appdata_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" -cPf $plex_tarball_path $plex_appdata_path
-echo -e ">] (Actual:   $((`sudo du -sk --apparent-size ${plex_tarball_path} | cut -f 1` / bar_constant)) MB)"
+actual_plex_size=`sudo du -sk --apparent-size ${plex_tarball_path} | cut -f 1`
+echo -e ">] (Actual:   $((actual_plex_size / bar_constant)) MB)"
 echo -e "${green}Plex tarball created!${nocolor}\n"
 
 ## restart Plex
@@ -98,7 +102,7 @@ echo "Analyzing filesystem size..."
 filesystem_size=0
 while IFS= read -r path; do
 	if ! [[ $path == "--exclude"* ]]; then
-		filesystem_size=$((filesystem_size + `sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --exclude=/dev/shm --apparent-size $path | cut -f 1`))
+		filesystem_size=$((filesystem_size + `sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --apparent-size $path | cut -f 1`))
 	fi
 done < /home/dante/.backup_dirs
 echo -e "${green}Filesystem analyzed!${nocolor}\n"
@@ -107,21 +111,22 @@ echo -e "${green}Filesystem analyzed!${nocolor}\n"
 echo -e "Creating filesystem tarball..."
 echo -e -n "Estimated: [`printf %${bar_length}s |tr ' ' '='`] (Estimate: $((filesystem_size / bar_constant)) MB)\nProgress:  ["
 sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${filesystem_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" -cPf ${filesystem_tarball_path} -T /home/dante/.backup_dirs
-echo -e ">] (Actual:   $((`sudo du -sk --apparent-size ${filesystem_tarball_path} | cut -f 1` / bar_constant)) MB)"
+actual_filesystem_size=`sudo du -sk --apparent-size ${filesystem_tarball_path} | cut -f 1`
+echo -e ">] (Actual:   $((actual_filesystem_size / bar_constant)) MB)"
 echo -e "${green}Filesystem tarball created!${nocolor}\n"
 
 ### compression + wrapping up
+## compress filesystem tarball + remove tarball after compression (-sdel flag)
+echo -e -n "Compressing filesystem tarball (${yellow}mx=${filesystem_compression}, LZMA2${nocolor})..."
+sudo 7z a -m0=lzma2 -mx=$filesystem_compression -sdel $filesystem_compressed_destination $filesystem_tarball_path
+echo -e "${green}Filesystem tarball compressed!${nocolor}\n"
+
 ## compress Plex tarball (if applicable) + remove tarball after compression (-sdel flag)
 if [ $plex_compression -ne 0 ]; then
-   echo -e "Compressing Plex tarball (${yellow}mx=${plex_compression}, LZMA2${nocolor})..."
+	echo -e -n "Compressing Plex tarball (${yellow}mx=${plex_compression}, LZMA2${nocolor})..."
 	sudo 7z a -m0=lzma2 -mx=$plex_compression -sdel $plex_compressed_destination $plex_tarball_path
 	echo -e "${green}Plex tarball compressed!${nocolor}\n"
 fi
-
-## compress filesystem tarball + remove tarball after compression (-sdel flag)
-echo -e "Compressing filesystem tarball (${yellow}mx=${filesystem_compression}, LZMA2${nocolor})..."
-sudo 7z a -m0=lzma2 -mx=$filesystem_compression -sdel $filesystem_compressed_destination $filesystem_tarball_path
-echo -e "${green}Filesystem tarball compressed!${nocolor}\n"
 
 ## disable Intel turbo boost
 echo -e "Disabling Intel Turbo Boost..."
@@ -133,7 +138,7 @@ sudo rm -rf "${working_dir_ram}"/staralfur*
 sudo rm -rf "${working_dir_nvme}"/plex*
 echo -e "${green}Residual files cleared!${nocolor}\n"
 
-### funny goat again
+### funny goat go brrrrrr again
 end_time=$SECONDS
 time_elapsed=$((end_time - start_time))
 echo -e "Finished daily backups in ${yellow}${time_elapsed}s${nocolor}. See ya space cowboy..." | goatthink -b -W 80
