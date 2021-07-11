@@ -66,6 +66,10 @@ if [ $plex_compression -eq 0 ]; then
    plex_tarball_path="${backup_dir}/plex_${datetime}.tar"
 fi
 
+## enable Intel turbo boost temporarily
+echo -e "Enabling Intel Turbo Boost..."
+turbo -e
+
 ## get estimated size of plex tarball
 echo "Analyzing Plex appdata directory size..."
 plex_appdata_size=`sudo du -sk --apparent-size ${plex_appdata_path} | cut -f 1`
@@ -118,6 +122,10 @@ fi
 echo -e "Compressing filesystem tarball (${yellow}mx=${filesystem_compression}, LZMA2${nocolor})..."
 sudo 7z a -m0=lzma2 -mx=$filesystem_compression -sdel $filesystem_compressed_destination $filesystem_tarball_path
 echo -e "${green}Filesystem tarball compressed!${nocolor}\n"
+
+## disable Intel turbo boost
+echo -e "Disabling Intel Turbo Boost..."
+turbo -d
 
 ## wipe working dirs
 echo -e "Cleaning up residual files..."
