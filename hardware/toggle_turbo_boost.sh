@@ -22,7 +22,7 @@ while getopts 'dert' flag; do
     e) mode="enable" ;;
     r) mode="report" ;;
     t) mode="toggle" ;; # switches to opposite state
-	*) echo -e "\n${red}Invalid arg.${nocolor} Printing report anyway..." && mode="report" ;;
+	*) echo -e "${red}Invalid arg.${nocolor} Printing report anyway..." && mode="report" ;;
   esac
 done
 
@@ -63,7 +63,6 @@ if [[ $mode != "report" ]]; then
         toggle_core_turbo "$curr_turbo_state"
     fi
 
-    echo
     new_turbo_state=`sudo rdmsr -p0 0x${register}`
     if [[ $new_turbo_state == $disabled_state ]]; then
         echo -e "${red}Disabled${nocolor} Turbo Boost"
@@ -74,7 +73,7 @@ if [[ $mode != "report" ]]; then
     fi
     echo
 else
-    echo -e -n "\nTurbo Boost Status: "
+    echo -e -n "Turbo Boost Status: "
     if [[ $curr_turbo_state -eq $disabled_state ]]; then
         echo -e "${red}Disabled${nocolor}"
     elif [[ $curr_turbo_state -eq $enabled_state ]]; then
