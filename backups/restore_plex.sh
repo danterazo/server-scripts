@@ -7,7 +7,7 @@ while getopts 'd:m:t' flag; do
   case "${flag}" in
 	d) backup_datetime="${OPTARG}" ;;	# -q <snapshot timestamp>. arg sets desired snapshot to restore from
     m) plex_compression="${OPTARG}" ;;	# -m <mx level>. arg sets expected compression level for Plex 7z
-	t) plex_compression=0
+	t) plex_compression=0 ;;
     *) exit 1 ;;
   esac
 done
