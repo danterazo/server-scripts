@@ -34,10 +34,10 @@ while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ## prep working dirs (recreate, remove residuals)
 echo -e "Preparing working directories..."
-mkdir -p ${backup_dir_root}
-mkdir -p ${backup_dir}
-mkdir -p ${working_dir_ram}
-mkdir -p ${working_dir_nvme}
+sudo mkdir -p ${backup_dir_root}
+sudo mkdir -p ${backup_dir}
+sudo mkdir -p ${working_dir_ram}
+sudo mkdir -p ${working_dir_nvme}
 sudo rm -rf "${working_dir_ram}"/staralfur*
 sudo rm -rf "${working_dir_nvme}"/plex*
 echo -e "${green}Working directories ready!${nocolor}\n"
