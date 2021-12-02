@@ -3,8 +3,10 @@
 # Prints local weather information for the MOTD
 
 # defaults
-city="Bloomington, IN"
-ICAO="KBMG"
+#city="Bloomington, IN"
+#ICAO="KBMG"
+city="Minneapolis, MN"
+ICAO="KMSP"
 
 # weather report
 echo "Current conditions in ${city} (${ICAO}):"
