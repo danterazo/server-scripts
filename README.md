@@ -17,6 +17,11 @@ This is a set of _very_ specific scripts for my personal NAS, dubbed "[Starálfu
   - Only one param (datetime / snapshot name)
 
 ### Hardware Configuration
+- `bench.sh`
+  - Benchmarks attached storage devices
+  - No need to include `/dev/` in name. Just use the storage device or partition name (e.g. `sdc1`)
+  - Optional param: `drive`
+    - If no params are given, the script will list attached storage devices and prompt the user to enter a name
 - `toggle_turbo_boost.sh`
   - Enables, disables, or toggles Intel's Turbo Boost tech to reduce wattage
     - I got a good deal on a K-series i5 chip, but this is a server and it doesn't need high clocks
