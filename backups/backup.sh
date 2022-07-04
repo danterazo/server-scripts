@@ -58,7 +58,7 @@ sudo dpkg --get-selections | sed "s/.*deinstall//" | sudo sed "s/install$//g" > 
 sudo dpkg-query -l | sed "s/.*deinstall//" | sudo sed "s/install$//g" > ${backup_dir}/pkglist_${datetime}_dpkg.txt
 echo -e "${green}Package lists created!${nocolor}\n"
 
-### backup plex directory. no compression because these are mostly images
+### backup plex directory. no compression by default since these are mostly images
 plex_appdata_path="/var/lib/plexmediaserver"
 plex_compressed_destination="${backup_dir}/plex_${datetime}_mx${plex_compression}.7z"
 
