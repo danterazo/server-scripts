@@ -16,7 +16,7 @@ drive_arg=${1:-"noarg"}
 if [ $drive_arg == "noarg" ]; then
     #if given no arguments, ask user for input
     lsblk -e7
-    echo -en "\nWhich ${orange}drive${nocolor} would you like to benchmark? "
+    echo -en "\nWhich ${orange}storage device${nocolor} would you like to benchmark? "
     read drive
 
     sudo hdparm -Ttv /dev/$drive
