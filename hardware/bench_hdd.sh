@@ -7,6 +7,9 @@ orange="\033[0;33m"
 yellow="\033[1;33m"
 nocolor="\033[0m"
 
+## sudo timeout trick
+while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ## input / arguments
 drive_arg=${1:-"noarg"}
 
