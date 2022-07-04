@@ -15,7 +15,7 @@ drive_arg=${1:-"noarg"}
 
 if [ $drive_arg == "noarg" ]; then
     #if given no arguments, ask user for input
-    lsblk
+    lsblk -e7
     echo -en "\nWhich ${orange}drive${nocolor} would you like to benchmark? "
     read drive
 
