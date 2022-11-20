@@ -1,8 +1,8 @@
 #!/bin/bash
 ### script to show temperature sensor data
 
-## load kernel driver
-sudo modprobe drivetemp
+## for hardware changes, run:
+##  sudo sensors-detect
 
-## print
+## print temps
 sensors
