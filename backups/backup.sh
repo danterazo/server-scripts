@@ -7,7 +7,7 @@ plex_compression=${1:-0}	# default: 0
 
 ## common variables for all files
 datetime=`date +"%Y-%m-%d_%H-%M-%S"`
-backup_dir_root="/media/sg01/backups/backups/snapshots"	# og: /media/wd00/backups
+backup_dir_root="/media/sg01/backups/snapshots"	# og: /media/wd00/backups
 backup_dir="${backup_dir_root}/snapshot_${datetime}"
 working_dir_ram="/dev/shm/bkp_work"
 working_dir_nvme="/tmp/bkp_work"
