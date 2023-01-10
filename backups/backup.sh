@@ -10,7 +10,7 @@ datetime=`date +"%Y-%m-%d_%H-%M-%S"`
 backup_dir_root="/media/sg01/backups/snapshots"	# og: /media/wd00/backups
 backup_dir="${backup_dir_root}/snapshot_${datetime}"
 working_dir_ram="/dev/shm/bkp_work"
-working_dir_nvme="/tmp/bkp_work"
+working_dir_nvme="/media/wd00/local/tmp/bkp_work"	# og: /tmp/bkp_work
 bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 

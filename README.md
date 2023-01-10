@@ -1,6 +1,6 @@
 # README
 ## About
-This is a set of _very_ specific scripts for my personal NAS, dubbed "[Starálfur](https://www.youtube.com/watch?v=7fEUUnXDnbk)". I hosted them here for versioning.
+This is a set of _very_ specific scripts for my personal servers, dubbed "[Starálfur](https://www.youtube.com/watch?v=7fEUUnXDnbk)" (NAS, Plex) and "[Sæglópur](https://www.youtube.com/watch?v=TFHCWZh0_Co)" (VPN, Seedbox). I'm hosting them here for versioning.
 
 ## Features
 ### Backups & Restoration
