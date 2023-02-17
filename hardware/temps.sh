@@ -1,5 +1,5 @@
 #!/bin/bash
-### script to show temperature sensor data
+### wrapper script to show temperature sensor data
 
 ## for hardware changes, run:
 ##  sudo sensors-detect

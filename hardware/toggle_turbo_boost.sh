@@ -1,5 +1,6 @@
 #!/bin/bash
-# heavily modified from: http://notepad2.blogspot.com/2014/11/a-script-to-turn-off-intel-cpu-turbo.html
+### script to toggle Intel CPU Turbo Boost
+### heavily modified from: http://notepad2.blogspot.com/2014/11/a-script-to-turn-off-intel-cpu-turbo.html
 
 # bash colors
 red="\033[0;31m"

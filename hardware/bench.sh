@@ -1,5 +1,5 @@
 #!/bin/bash
-### script to benchmark given storage device
+### wrapper script to benchmark given storage device
 
 ## bash colors
 red="\033[0;31m"
