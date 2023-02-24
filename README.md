@@ -10,6 +10,7 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Automated daily runs with `cron`
   - Downtime is minimized to mere minutes by first copying directories then working on said copies
   - Only one param (compression level). The script takes care of the rest
+    - e.g. `backup 9` for max compression (7z mx=9)
   - Temporarily reenables Intel's Turbo Boost (see `toggle_turbo_boost.sh` below) for speedier (?) compression
 - `restore_plex.sh`
   - Restore [Plex Media Server](https://support.plex.tv/articles/200288286-what-is-plex/) config from a timestamped snapshot
@@ -27,6 +28,10 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
     - I got a good deal on a K-series i5 chip, but this is a server and it doesn't need high clocks
   - Automatically toggles off with `cron` with each reboot
   - Optional param: `desired_state`
+    - Disable: `turbo disable` / `turbo d` / `turbo 0`
+    - Enable: `turbo enable` / `turbo e`, `turbo 1`
+    - Toggle: `turbo toggle` / `turbo t` / `turbo 2`
+    - Report: `turbo report` / `turbo r`, `turbo 3`
     - If no params are given, the script reports the current turbo boost status
 
 ### Installation Scripts
