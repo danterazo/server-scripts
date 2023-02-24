@@ -15,21 +15,10 @@ if [[ -z $(which rdmsr) ]]; then
     exit 1
 fi
 
-# param check
-mode="report"   # default
-while getopts 'dert' flag; do
-  case "${flag}" in
-    0) mode="disable" ;;
-    d) mode="disable" ;;
-    1) mode="enable" ;;
-    e) mode="enable" ;;
-    r) mode="report" ;;
-    t) mode="toggle" ;; # switches to opposite state
-	*) echo -e "${red}Invalid arg.${nocolor} Printing report anyway..." && mode="report" ;;
-  esac
-done
+## arguments
+mode=${1:-r}	# default: report (r)
 
-# constants
+# register constants
 register=1a0
 disabled_state=4000850089
 enabled_state=850089
@@ -57,15 +46,16 @@ toggle_core_turbo () {
 curr_turbo_state=`sudo rdmsr -p0 0x${register}`
 
 # disable, enable, or toggle state
-if [[ $mode != "report" ]]; then
-    if [[ $mode == "disable" || $mode == 0 ]]; then
+if [[ $mode != "report" && $mode != 3 && $mode != "r" ]]; then
+    if [[ $mode == "disable" || $mode == 0 || $mode == "d" ]]; then
         disable_turbo
-    elif [[ $mode == "enable" || $mode == 1 ]]; then
+    elif [[ $mode == "enable" || $mode == 1 || $mode == "e" ]]; then
         enable_turbo
-    elif [[ $mode == "toggle" ]]; then
+    elif [[ $mode == "toggle" || $mode == 2 || $mode == "t" ]]; then
         toggle_core_turbo "$curr_turbo_state"
     fi
 
+    # verify turbo state
     new_turbo_state=`sudo rdmsr -p0 0x${register}`
     if [[ $new_turbo_state == $disabled_state ]]; then
         echo -e "${red}Disabled${nocolor} Turbo Boost"
@@ -75,6 +65,8 @@ if [[ $mode != "report" ]]; then
         echo -e "${orange}Unable to verify${nocolor} Turbo Boost status"
     fi
     echo
+
+# print report
 else
     echo -e -n "Turbo Boost Status: "
     if [[ $curr_turbo_state -eq $disabled_state ]]; then
