@@ -19,7 +19,9 @@ fi
 mode="report"   # default
 while getopts 'dert' flag; do
   case "${flag}" in
+    0) mode="disable" ;;
     d) mode="disable" ;;
+    1) mode="enable" ;;
     e) mode="enable" ;;
     r) mode="report" ;;
     t) mode="toggle" ;; # switches to opposite state
@@ -56,9 +58,9 @@ curr_turbo_state=`sudo rdmsr -p0 0x${register}`
 
 # disable, enable, or toggle state
 if [[ $mode != "report" ]]; then
-    if [[ $mode == "disable" ]]; then
+    if [[ $mode == "disable" || $mode == 0 ]]; then
         disable_turbo
-    elif [[ $mode == "enable" ]]; then
+    elif [[ $mode == "enable" || $mode == 1 ]]; then
         enable_turbo
     elif [[ $mode == "toggle" ]]; then
         toggle_core_turbo "$curr_turbo_state"
