@@ -70,7 +70,7 @@ fi
 
 ## enable Intel turbo boost temporarily
 echo -e "Enabling Intel Turbo Boost..."
-turbo -e
+turbo enable
 
 ## get estimated size of plex tarball
 echo "Analyzing Plex appdata directory size..."
@@ -129,7 +129,7 @@ fi
 
 ## disable Intel turbo boost
 echo -e "Disabling Intel Turbo Boost..."
-turbo -d
+turbo disable
 
 ## wipe working dirs
 echo -e "Cleaning up residual files..."
