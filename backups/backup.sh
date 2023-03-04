@@ -101,7 +101,7 @@ filesystem_compressed_destination="${backup_dir}/staralfur_${datetime}_mx${files
 echo "Analyzing filesystem size..."
 filesystem_size=0
 while IFS= read -r path; do
-	if ! [[ $path != "--exclude"* ]]; then
+	if ! [[ $path == "--exclude"* ]]; then
 		filesystem_size=$((filesystem_size + `sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --apparent-size $path | cut -f 1`))
 	fi
 done < /home/dante/.backup_dirs
