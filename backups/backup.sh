@@ -7,10 +7,10 @@ plex_compression=${1:-0}	# default: 0
 
 ## common variables for all files
 datetime=`date +"%Y-%m-%d_%H-%M-%S"`
-backup_dir_root="/media/sg01/backups/snapshots"	# og: /media/wd00/backups
+working_dir_nvme="/media/sd/cache/bkp_work"	# og: /tmp/bkp_work
+backup_dir_root="/media/ts/backups/snapshots"	# og: /media/wd00/backups
 backup_dir="${backup_dir_root}/snapshot_${datetime}"
 working_dir_ram="/dev/shm/bkp_work"
-working_dir_nvme="/media/wd00/local/tmp/bkp_work"	# og: /tmp/bkp_work
 bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 
@@ -60,6 +60,7 @@ echo -e "${green}Package lists created!${nocolor}\n"
 
 ### backup plex directory. no compression by default since these are mostly images
 plex_appdata_path="/var/lib/plexmediaserver"
+plex_cache_path="/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Cache"	# TODO: deprecate
 plex_compressed_destination="${backup_dir}/plex_${datetime}_mx${plex_compression}.7z"
 
 ## if mx=0, write tarball directly to backup directory instead of working dir. else, default to latter
@@ -74,13 +75,13 @@ turbo enable
 
 ## get estimated size of plex tarball
 echo "Analyzing Plex appdata directory size..."
-plex_appdata_size=`sudo du -sk --apparent-size ${plex_appdata_path} | cut -f 1`
+plex_appdata_size=`sudo du -sk --exclude="Cache" --apparent-size ${plex_appdata_path} | cut -f 1`
 echo -e "${green}Plex appdata directory analyzed!${nocolor}\n"
 
 ## create plex tarball + print progress bar
 echo "Creating Plex tarball..."
 echo -e -n "Estimated: [`printf %${bar_length}s |tr ' ' '='`] (Estimate: $((plex_appdata_size / bar_constant)) MB)\nProgress:  ["
-sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${plex_appdata_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" -cPf $plex_tarball_path $plex_appdata_path
+sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${plex_appdata_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" --exclude "Application\ Support/Plex\ Media\ Server/Cache" -cPf $plex_tarball_path $plex_appdata_path
 actual_plex_size=`sudo du -sk --apparent-size ${plex_tarball_path} | cut -f 1`
 echo -e ">] (Actual:   $((actual_plex_size / bar_constant)) MB)"
 echo -e "${green}Plex tarball created!${nocolor}\n"
@@ -100,7 +101,7 @@ filesystem_compressed_destination="${backup_dir}/staralfur_${datetime}_mx${files
 echo "Analyzing filesystem size..."
 filesystem_size=0
 while IFS= read -r path; do
-	if ! [[ $path == "--exclude"* ]]; then
+	if ! [[ $path != "--exclude"* ]]; then
 		filesystem_size=$((filesystem_size + `sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --apparent-size $path | cut -f 1`))
 	fi
 done < /home/dante/.backup_dirs

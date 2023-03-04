@@ -14,7 +14,7 @@ done
 
 ## common variables
 bar_length=80
-backup_dir="/media/sg01/backups/snapshots"
+backup_dir="/media/ts/backups/snapshots"
 tmp_dir="/tmp/plex_restore"
 
 # colors
