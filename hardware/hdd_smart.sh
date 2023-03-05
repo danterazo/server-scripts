@@ -1,5 +1,5 @@
 #!/bin/bash
-### wrapper script to show SMART info for given storage device
+### wrapper script to query SMART data for given storage device
 
 ## imports
 source ~/scripts/constants/bash_colors.sh

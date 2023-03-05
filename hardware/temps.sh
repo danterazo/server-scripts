@@ -1,5 +1,5 @@
 #!/bin/bash
-### wrapper script to show temperature sensor data
+### wrapper script to display formatted temperature data for CPU and attached storage devices
 ### NOTE: for hardware changes, run: sudo sensors-detect
 
 ## imports
