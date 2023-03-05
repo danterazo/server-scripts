@@ -9,15 +9,14 @@ source /home/dante/scripts/constants/bash_formats.sh
 while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # constants
-find="coretemp-isa-0000"
-replace="Intel i5-10600K:"
+cpu_name="Intel i5-10600K" # for sed
 
 # retrieve and format NVMe temperature
 nvme_temp=`sudo smartctl -a /dev/nvme0n1 | grep "Temperature Sensor" | grep -o "...........$" | sed -e "s/ Celsius/\//" | tr -d "[:space:]" | sed "s/.$/°C/"`
 
 # retrieve and print temps
 paste \
-<( sensors | grep -i "core" | sed -e "s/${find}/${replace}/" ) \
+<( sensors | grep -i "core" | sed -e "s/coretemp-isa-0000/${cpu_name}:/" ) \
 <( echo -e "${underline}SATA${noformat}:" && sudo hddtemp /dev/sd?; \
 echo -e "${underline}NVMe${noformat}:\n/dev/nvme0n1: Samsung SSD 980: ${nvme_temp}" ) \
 | column -s $'\t' -t
