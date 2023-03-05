@@ -17,11 +17,11 @@ drive_arg=${1:-"noarg"}
 if [ $drive_arg == "noarg" ]; then
     #if given no arguments, ask user for input
     lsblk -e7
-    echo -en "\nWhich ${orange}storage device${nocolor} would you like to benchmark? "
+    echo -en "\nWhich ${orange}storage device${nocolor} would you like to review? "
     read drive
 
-    sudo smartctl -i /dev/$drive
+    sudo smartctl -Ai /dev/$drive
 else
     # else, use given argument
-    sudo smartctl -i /dev/$drive_arg
+    sudo smartctl -Ai /dev/$drive_arg
 fi
