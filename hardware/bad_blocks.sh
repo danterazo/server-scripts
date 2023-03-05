@@ -2,7 +2,7 @@
 ### wrapper script to detect bad blocks on given storage device
 
 ## imports
-source ~/scripts/constants/bash_colors.sh
+source /home/dante/scripts/constants/bash_colors.sh
 
 ## sudo timeout trick
 while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &

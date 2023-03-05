@@ -3,7 +3,7 @@
 ### heavily modified from: http://notepad2.blogspot.com/2014/11/a-script-to-turn-off-intel-cpu-turbo.html
 
 ## imports
-source ~/scripts/constants/bash_colors.sh
+source /home/dante/scripts/constants/bash_colors.sh
 
 # requirement check
 if [[ -z $(which rdmsr) ]]; then

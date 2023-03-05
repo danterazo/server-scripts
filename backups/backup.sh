@@ -15,7 +15,7 @@ bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 
 ## imports
-source ~/scripts/constants/bash_colors.sh
+source /home/dante/scripts/constants/bash_colors.sh
 
 ## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then
