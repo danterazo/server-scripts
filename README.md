@@ -43,5 +43,13 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Used primarily in my Message of the Day (MOTD). Prints a concise weather report for Bloomington, IN (ICAO: KBMG)
   - Optional verbose (`v`) flag to return slightly longer weather report
 
+### Constants
+- `bash_colors.sh`
+  - Contains color codes for use in prints
+  - Example usage: `${yellow}Example${nocolor}`
+- `bash_formats.sh`
+  - Contains style codes for use in prints
+  - Example usage: `${underline}Example${noformat}`
+
 ## TODO
 - Fan control scripts (in `hardware/`) with `lm-sensors`
