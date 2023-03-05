@@ -1,5 +1,4 @@
 #!/bin/sh
-#
 # Prints local weather information for the MOTD
 
 # defaults
