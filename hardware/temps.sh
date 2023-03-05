@@ -12,10 +12,10 @@ while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 find="coretemp-isa-0000"
 replace="Intel i5-10600K:"
 
-# evaluations
+# retrieve and format NVMe temperature
 nvme_temp=`sudo smartctl -a /dev/nvme0n1 | grep "Temperature Sensor" | grep -o "...........$" | sed -e "s/ Celsius/\//" | tr -d "[:space:]" | sed "s/.$/°C/"`
 
-# print temps
+# retrieve and print temps
 paste \
 <( sensors | grep -i "core" | sed -e "s/${find}/${replace}/" ) \
 <( echo -e "${underline}SATA${noformat}:" && sudo hddtemp /dev/sd?; \
