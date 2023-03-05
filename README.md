@@ -17,12 +17,25 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Stops PMS service, deletes current PMS appdata directory, writes snapshot to it, restores permissions, removes instance-specific cache files, then restarts PMS
   - Only one param (datetime / snapshot name)
 
-### Hardware Configuration
+### Hardware Scripts
+- `bad_blocks.sh`
+  - Script to detect bad blocks on given storage device
+    - Optional param: `drive`
+    - If no params are given, the script will list attached storage devices and prompt the user to enter a device name
+    - No need to include `/dev/` in the name for either parameter. Just use the storage device or partition name (e.g. `sda`)
 - `bench.sh`
   - Benchmarks attached storage devices
   - Optional param: `drive`
-    - If no params are given, the script will list attached storage devices and prompt the user to enter a name
-    - No need to include `/dev/` in the name for either parameter. Just use the storage device or partition name (e.g. `sdc1`)
+    - If no params are given, the script will list attached storage devices and prompt the user to enter a device name
+    - No need to include `/dev/` in the name for either parameter. Just use the storage device or partition name (e.g. `sda`)
+- `hdd_smart.sh`
+  - Script to query [SMART](https://en.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology) data for given storage device
+    - Optional param: `drive`
+    - If no params are given, the script will list attached storage devices and prompt the user to enter a device name
+    - No need to include `/dev/` in the name for either parameter. Just use the storage device or partition name (e.g. `sda`)
+- `temps.sh`
+  - Shows formatted temperature data for CPU and attached storage devices
+  - No params
 - `toggle_turbo_boost.sh`
   - Enables, disables, or toggles Intel's Turbo Boost tech to reduce wattage
     - I got a good deal on a K-series i5 chip, but this is a server and it doesn't need high clocks
