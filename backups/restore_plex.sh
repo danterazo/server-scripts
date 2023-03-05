@@ -17,12 +17,8 @@ bar_length=80
 backup_dir="/media/ts/backups/snapshots"
 tmp_dir="/tmp/plex_restore"
 
-# colors
-red="\033[0;31m"
-green="\033[0;32m"
-orange="\033[0;33m"
-yellow="\033[1;33m"
-nocolor="\033[0m"
+## imports
+source ~/scripts/constants/bash_colors.sh
 
 ## funny goat go baaaaaaa + stop Plex
 goatthink -b "Welcome to Dante's Plex restore script."

@@ -14,12 +14,8 @@ working_dir_ram="/dev/shm/bkp_work"
 bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 
-# colors
-red="\033[0;31m"
-green="\033[0;32m"
-orange="\033[0;33m"
-yellow="\033[1;33m"
-nocolor="\033[0m"
+## imports
+source ~/scripts/constants/bash_colors.sh
 
 ## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then
