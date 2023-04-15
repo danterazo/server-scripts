@@ -5,10 +5,12 @@
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
+sudo snap refresh
 
-# funny goat go brrrrrrr
+# daily wisdom
 goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
 
 # stats
-bashtop
+# bashtop # old version
+btop    # new C++ version
