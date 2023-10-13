@@ -2,8 +2,9 @@
 ### script to toggle Intel CPU Turbo Boost
 ### heavily modified from: http://notepad2.blogspot.com/2014/11/a-script-to-turn-off-intel-cpu-turbo.html
 
-## imports
-source /home/dante/scripts/constants/bash_colors.sh
+## common
+source /home/dante/scripts/constants/bash_formatting.sh
+source /home/dante/scripts/constants/sudo_timeout.sh
 
 # requirement check
 if [[ -z $(which rdmsr) ]]; then

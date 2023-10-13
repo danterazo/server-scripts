@@ -14,8 +14,9 @@ working_dir_ram="/dev/shm/bkp_work"
 bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 
-## imports
-source /home/dante/scripts/constants/bash_colors.sh
+## common
+source /home/dante/scripts/constants/bash_formatting.sh
+source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then
@@ -24,9 +25,6 @@ else
   echo -e "Running backups (${orange}mx=${plex_compression}${nocolor}). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
 fi
 sudo service plexmediaserver stop
-
-## sudo timeout trick
-while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ## prep working dirs (recreate, remove residuals)
 echo -e "Preparing working directories..."

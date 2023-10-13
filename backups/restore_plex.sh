@@ -18,7 +18,7 @@ backup_dir="/media/ts/backups/snapshots"
 tmp_dir="/tmp/plex_restore"
 
 ## imports
-source /home/dante/scripts/constants/bash_colors.sh
+source /home/dante/scripts/constants/bash_formatting.sh
 
 ## funny goat go baaaaaaa + stop Plex
 goatthink -b "Welcome to Dante's Plex restore script."
