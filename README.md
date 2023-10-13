@@ -1,6 +1,6 @@
 # README
 ## About
-This is a set of _very_ specific scripts for my personal servers, dubbed "[Starálfur](https://www.youtube.com/watch?v=7fEUUnXDnbk)" (NAS, Plex) and "[Sæglópur](https://www.youtube.com/watch?v=TFHCWZh0_Co)" (VPN, Seedbox). I'm hosting them here for versioning.
+This is a set of _very_ specific scripts for my personal servers, dubbed "[Starálfur](https://www.youtube.com/watch?v=7fEUUnXDnbk)" (NAS, Plex) and "[Sæglópur](https://www.youtube.com/watch?v=TFHCWZh0_Co)" (VPN, DNS Sinkhole, Seedbox). I'm hosting them here for versioning.
 
 ## Features
 ### Backups & Restoration
@@ -11,11 +11,11 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star�
   - Downtime is minimized to mere minutes by first copying directories then working on said copies
   - Only one param (compression level). The script takes care of the rest
     - e.g. `backup 9` for max compression (7z mx=9)
-  - Temporarily reenables Intel's Turbo Boost (see `toggle_turbo_boost.sh` below) for speedier (?) compression
+  - Temporarily reenables Intel's Turbo Boost (see `toggle_turbo_boost.sh` below) for faster compression
 - `restore_plex.sh`
   - Restore [Plex Media Server](https://support.plex.tv/articles/200288286-what-is-plex/) config from a timestamped snapshot
   - Stops PMS service, deletes current PMS appdata directory, writes snapshot to it, restores permissions, removes instance-specific cache files, then restarts PMS
-  - Only one param (datetime / snapshot name)
+  - Only one param (datetime / snapshot name) required
 
 ### Hardware Scripts
 - `bad_blocks.sh`
@@ -48,8 +48,16 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star�
     - If no params are given, the script reports the current turbo boost status
 
 ### Installation Scripts
+- `install_mergerfs.sh`
+  - Installs MergerFS prereqs, clones Git repo, builds, installs, then cleans residual files
 - `install_plex.sh`
   - Retrieves specified (hardcoded) Plex Media Server executable, installs it, enables service, verifies service status, then removes executable
+
+### Plex
+- `force_loudness`
+  - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!! 
+  - Optional flag: `-v`
+    - Shows Plex Scanner logs. Loudness jobs don't show in the UI, so this is one way to track progress.
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
@@ -57,12 +65,10 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star�
   - Optional verbose (`v`) flag to return slightly longer weather report
 
 ### Constants
-- `bash_colors.sh`
-  - Contains color codes for use in prints
-  - Example usage: `${yellow}Example${nocolor}`
-- `bash_formats.sh`
-  - Contains style codes for use in prints
-  - Example usage: `${underline}Example${noformat}`
+- `bash_formatting.sh`
+  - Contains color and style codes for use in prints
+  - Example color usage: `${yellow}Example${nocolor}`
+  - Example format usage: `${underline}Example${noformat}`
 
 ## TODO
 - Fan control scripts (in `hardware/`) with `lm-sensors`
