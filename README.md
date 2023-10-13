@@ -58,6 +58,8 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!! 
   - Optional flag: `-v`
     - Shows Plex Scanner logs. Loudness jobs don't show in the UI, so this is one way to track progress.
+  - Optional flag: `-l`
+    - Shows just the Plex Scanner logs. Doesn't force a loudness scan
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)

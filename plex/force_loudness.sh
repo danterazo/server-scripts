@@ -11,9 +11,10 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## input / arguments
 show_logs="false"
-while getopts 'v' flag; do
+while getopts 'vl' flag; do
   case "${flag}" in
 	v) show_logs="true" ;;	# show logs if "-v" is passed in. V for verbose
+	l) show_logs="only" ;;	# show ONLY logs. don't kick off loudness analysis
   esac
 done
 
@@ -21,6 +22,10 @@ if [ $show_logs == "true" ]; then
     # if given no arguments, watch logs (work doesn't show in the Plex GUI)
     echo -n -e "${yellow}Loudness analysis job started!${green} Printing logs:${nocolor}\n"
     /usr/lib/plexmediaserver/'Plex Media Scanner' --analyze-loudness --section 2 --force &
+    tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log"
+elif [ $show_logs == "only" ]; then
+    # case to print only logs. useful if the SSH session drops
+    echo -n -e "Printing logs:\n"
     tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log"
 else
     # if given "false" or no argument, skip logs
