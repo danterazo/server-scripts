@@ -26,7 +26,7 @@ if [ $show_logs == "true" ]; then
 elif [ $show_logs == "only" ]; then
     # case to print only logs. useful if the SSH session drops
     echo -n -e "Printing logs:\n"
-    tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log"
+    tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log" | grep loudness
 else
     # if given "false" or no argument, skip logs
     echo -n -e "${yellow}Loudness analysis job started!${red} Skipping logs.${nocolor}\n"
