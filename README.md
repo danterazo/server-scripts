@@ -55,11 +55,23 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
 
 ### Plex
 - `force_loudness`
-  - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!! 
-  - Optional flag: `-v`
-    - Shows Plex Scanner logs. Loudness jobs don't show in the UI, so this is one way to track progress.
-  - Optional flag: `-l`
-    - Shows just the Plex Scanner logs. Doesn't force a loudness scan
+  - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!!
+  - Note on logs: Loudness jobs don't show in the UI, so consider enabling logs
+  - Defaults: normal scan, show logs
+  - Scan flags
+    - `-f`: kick off _forced_ deep analysis scan
+    - `-s`: kick off _normal_ deep analysis scan (no `--forced` flag). Redundant since default is "normal scan"
+  - Logging flags
+    - `-v`: show logs ("v" for verbose). Redundant since default is "true"
+    - `-q`: hide logs ("q" for quiet)
+  - Shortcut flags
+    - `-l`: show logs without starting a scan. Useful if SSH session times out. "l" for logs
+  - Examples
+    - `sh force_loudness.sh`: kick off normal scan and show logs
+    - `sh force_loudness.sh -sv`: same as above
+    - `sh force_loudness.sh -fq`: kick off forced deep analysis scan but hide logs
+    - `sh force_loudness.sh -f`: kick off forced deep analysis scan and show logs
+    - `sh force_loudness.sh -fv`: same as above
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
