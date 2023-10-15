@@ -56,11 +56,11 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
 ### Plex
 - `force_loudness`
   - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!!
-  - Note on logs: Loudness jobs don't show in the UI, so consider enabling logs
+  - Note on logs: CLI loudness jobs don't show in the UI, so consider enabling logs
   - Defaults: normal scan, show logs
   - Scan flags
-    - `-f`: kick off _forced_ deep analysis scan
-    - `-s`: kick off _normal_ deep analysis scan (no `--forced` flag). Redundant since default is "normal scan"
+    - `-f`: kick off _forced_ loudness analysis scan
+    - `-s`: kick off _normal_ loudness analysis scan (no `--forced` flag). Redundant since default is "normal scan"
   - Logging flags
     - `-v`: show logs ("v" for verbose). Redundant since default is "true"
     - `-q`: hide logs ("q" for quiet)
@@ -69,8 +69,8 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Examples
     - `sh force_loudness.sh`: kick off normal scan and show logs
     - `sh force_loudness.sh -sv`: same as above
-    - `sh force_loudness.sh -fq`: kick off forced deep analysis scan but hide logs
-    - `sh force_loudness.sh -f`: kick off forced deep analysis scan and show logs
+    - `sh force_loudness.sh -fq`: kick off loudness deep analysis scan but hide logs
+    - `sh force_loudness.sh -f`: kick off loudness deep analysis scan and show logs
     - `sh force_loudness.sh -fv`: same as above
 
 ### Fun Scripts
