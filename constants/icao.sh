@@ -1,0 +1,2 @@
+btownICAO="KBMG"
+mplsICAO="KMSP"
