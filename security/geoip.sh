@@ -16,10 +16,10 @@ geoip_arg=${1:-"f"}
 echo -en "${yellow}"
 
 # print results
-if [ $geoip_arg == "f" ]; then
+if [[ $geoip_arg == "f" ]]; then
     # if given no arguments, print full report
     curl --silent "https://ipinfo.io/"
-elif [ $geoip_arg == "f" ]; then
+elif [[ $geoip_arg == "f" ]]; then
     curl --silent "https://ipinfo.io/region"
 else
     # else, use region
