@@ -75,15 +75,17 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Shortcut flags
     - `-l`: show logs without starting a scan. Useful if SSH session times out. "l" for logs
   - Examples
-    - `sh force_loudness.sh`: kick off normal scan and show logs
-    - `sh force_loudness.sh -sv`: same as above
-    - `sh force_loudness.sh -fq`: kick off loudness deep analysis scan but hide logs
-    - `sh force_loudness.sh -f`: kick off loudness deep analysis scan and show logs
-    - `sh force_loudness.sh -fv`: same as above
+    - `bash force_loudness.sh`: kick off normal scan and show logs
+    - `bash force_loudness.sh -sv`: same as above
+    - `bash force_loudness.sh -fq`: kick off loudness deep analysis scan but hide logs
+    - `bash force_loudness.sh -f`: kick off loudness deep analysis scan and show logs
+    - `bash force_loudness.sh -fv`: same as above
 
 ### Config Scripts
 - `rotate_screen.sh`
-  - Rotates the terminal 90 degrees clockwise. Useful when I'm using the Rasberry Pi with a monitor.
+  - Rotates the terminal 90 degrees clockwise by default. Useful when I'm using the Rasberry Pi with my vertical monitor
+  - Optional parameter for orientation
+    - e.g. `rotate_screen 1` to rotate terminal clockwise. Equivalent to `rotate_screen`
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
@@ -95,6 +97,12 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Contains color and style codes for use in prints
   - Example color usage: `${yellow}Example${nocolor}`
   - Example format usage: `${underline}Example${noformat}`
+
+### Rest
+- `startup.sh`
+  - gets updates and starts `btop`
+- `common.sh`
+  - common exports shared between my machines, sourced by bash profile
 
 ## TODO
 - Fan control scripts (in `hardware/`) with `lm-sensors`
