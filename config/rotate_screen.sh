@@ -1,2 +1,6 @@
-#!/bin/sh
-echo 1 | sudo tee /sys/class/graphics/fbcon/rotate_all
+#!/bin/bash
+
+## input / arguments
+orientation=${1:-1}
+
+echo $orientation | sudo tee /sys/class/graphics/fbcon/rotate_all
