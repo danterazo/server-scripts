@@ -47,13 +47,21 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
     - Report: `turbo report` / `turbo r`, `turbo 3`
     - If no params are given, the script reports the current turbo boost status
 
+### Security Scripts
+- `geoip.sh`
+  - Returns IP geolocation information. Useful for determining VPN status
+  - Detail flags
+    - `f`: return full report on IP
+    - `r`: return IP region
+    - None: defaults to `f`
+
 ### Installation Scripts
 - `install_mergerfs.sh`
   - Installs MergerFS prereqs, clones Git repo, builds, installs, then cleans residual files
 - `install_plex.sh`
   - Retrieves specified (hardcoded) Plex Media Server executable, installs it, enables service, verifies service status, then removes executable
 
-### Plex
+### Plex Scripts
 - `force_loudness`
   - Forces a full "loudness analysis" scan on Plex's music library. CPU intensive!!
   - Note on logs: CLI loudness jobs don't show in the UI, so consider enabling logs
@@ -72,6 +80,10 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
     - `sh force_loudness.sh -fq`: kick off loudness deep analysis scan but hide logs
     - `sh force_loudness.sh -f`: kick off loudness deep analysis scan and show logs
     - `sh force_loudness.sh -fv`: same as above
+
+### Config Scripts
+- `rotate_screen.sh`
+  - Rotates the terminal 90 degrees clockwise. Useful when I'm using the Rasberry Pi with a monitor.
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
