@@ -7,7 +7,7 @@ source /home/dante/scripts/constants/bash_formatting.sh
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # constants
-cpu_name="Intel i5-10600K" # for sed
+cpu_name=`lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p'` # for sed
 
 # retrieve and format NVMe temperature
 nvme_temp=`sudo smartctl -a /dev/nvme0n1 | grep "Temperature Sensor" | grep -o "...........$" | sed -e "s/ Celsius/\//" | tr -d "[:space:]" | sed "s/.$/°C/"`
