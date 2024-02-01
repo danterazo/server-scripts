@@ -43,6 +43,3 @@ export -f rscreen
 
 bbkp  () { bash "/home/dante/scripts/backups/borg_bkp.sh" ${1}; }
 export -f bbkp
-
-bbkp  () { bash "/home/dante/scripts/backups/borg_bkp.sh" ${1}; }
-export -f bbkp
