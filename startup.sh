@@ -1,7 +1,7 @@
 #!/bin/bash
 ### dante's startup script
 
-## common
+## common function
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## get + apply updates
@@ -9,6 +9,9 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
 sudo snap refresh
+
+# update git repos
+git -C /home/dante/scripts/ pull
 
 ## use custom update scripts
 for f in /home/dante/scripts/updates/*.sh; do
