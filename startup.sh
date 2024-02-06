@@ -10,6 +10,11 @@ sudo apt upgrade -y
 sudo apt autoremove -y
 sudo snap refresh
 
+## use custom update scripts
+for f in /home/dante/scripts/updates/*.sh; do
+  bash "$f" 
+done
+
 ## daily wisdom
 goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
