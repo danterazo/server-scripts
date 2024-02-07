@@ -1,6 +1,9 @@
 #!/bin/bash
 ### sourced by dante's bash profiles
 
+# common sources
+source /home/dante/scripts/constants/bash_formatting.sh
+
 # dante's common aliases
 alias startup="bash /home/dante/scripts/startup.sh"
 alias temps="bash /home/dante/scripts/hardware/temps.sh"
