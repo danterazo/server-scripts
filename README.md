@@ -65,7 +65,6 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
     - `wgrf us-co-10`
     - `wgrf`
 
-
 ### Installation Scripts
 - `install_mergerfs.sh`
   - Installs MergerFS prereqs, clones Git repo, builds, installs, then cleans residual files
