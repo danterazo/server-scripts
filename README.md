@@ -58,6 +58,13 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
   - Creates "physical" namespace for network adapters
 - `wireguard_refresh.sh`
   - Copies local WG config to `/etc/wireguard/`
+  - Accepts profile name argument
+    - If profile name is given, it will apply that profile
+    - If no profile name is given, it will list the available profiles and ask the user to choose
+  - Example usage:
+    - `wgrf us-co-10`
+    - `wgrf`
+
 
 ### Installation Scripts
 - `install_mergerfs.sh`

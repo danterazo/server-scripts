@@ -1,14 +1,43 @@
 #!/bin/bash
-### script for IP geolocation
+### script to update wireguard configs
 
-## common
+## sudo timeout trick
+source /home/dante/scripts/constants/sudo_timeout.sh
+
+## constants
+wg_profile_src_dir=/home/dante/.config/wireguard/
+wg_profile_dst_dir=/etc/wireguard/
+wg_service_name=wg0
+
+## input / arguments
+new_wg_profile=${1:-"noarg"}
+
+## defaults
 default_wg_profile=us-co-10
 
-if [[ $# == 0 ]]; then
-  new_wg_profile=default_wg_profile
+if [ $new_wg_profile == "noarg" ]; then
+    # if given no arguments, ask user for input
+    echo
+    sudo ls $wg_profile_src_dir | sed s:.conf:: | sort -u
+    echo -en "\nWhich ${orange}Wireguard Profile${nocolor} would you like to use? "
+    read new_wg_profile
 else
-  new_wg_profile=$1
+    # else, use given argument
+    new_wg_profile=$default_wg_profile
 fi
 
-sudo cp /home/dante/.config/wireguard/${new_wg_profile}.conf /etc/wireguard/wg0.conf
+# bring down VPN and deluge service
+echo -e "Stopping Deluge and Wireguard..."
+sudo service deluged stop
+sudo wg-quick down ${wg_service_name}
+
+# copy
+echo -e "Applying ${orange}${new_wg_profile}${nocolor} profile"
+sudo cp ${wg_profile_src_dir}${new_wg_profile}.conf ${wg_profile_dst_dir}${wg_service_name}.conf
+
+# restore VPN and deluge
+echo
+echo -e "Starting Deluge and Wireguard..."
+sudo service deluged start
+sudo wg-quick up ${wg_service_name}
 

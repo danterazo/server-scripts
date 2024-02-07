@@ -51,3 +51,6 @@ export -f bbkp
 
 turbo () { bash "/home/dante/scripts/hardware/toggle_turbo_boost.sh" ${1}; }
 export -f turbo
+
+wgrf () { bash "/home/dante/scripts/security/wireguard_refresh.sh" ${1}; }
+export -f wgrf
