@@ -43,3 +43,6 @@ export -f rscreen
 
 bbkp  () { bash "/home/dante/scripts/backups/borg_bkp.sh" ${1}; }
 export -f bbkp
+
+turbo () { bash "/home/dante/scripts/hardware/toggle_turbo_boost.sh" ${1}; }
+export -f turbo
