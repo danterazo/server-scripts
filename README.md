@@ -54,6 +54,10 @@ This is a set of _very_ specific scripts for my personal servers, dubbed "[Star√
     - `f`: return full report on IP
     - `r`: return IP region
     - None: defaults to `f`
+- `wireguard_namespace.sh`
+  - Creates "physical" namespace for network adapters
+- `wireguard_refresh.sh`
+  - Copies local WG config to `/etc/wireguard/`
 
 ### Installation Scripts
 - `install_mergerfs.sh`
