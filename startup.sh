@@ -1,7 +1,7 @@
 #!/bin/bash
 ### dante's startup script
 
-## common function
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## get + apply updates
@@ -23,5 +23,4 @@ goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
 
 ## stats
-# bashtop # old version
 btop    # new C++ version

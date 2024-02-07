@@ -1,8 +1,7 @@
 #!/bin/bash
 ### wrapper script to detect bad blocks on given storage device
 
-## common
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## input / arguments

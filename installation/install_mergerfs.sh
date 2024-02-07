@@ -1,5 +1,5 @@
 #!/bin/bash
-## common
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## install prereqs

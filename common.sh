@@ -1,13 +1,14 @@
 #!/bin/bash
 ### sourced by dante's bash profiles
 
-# common sources
+# source formatting
 source /home/dante/scripts/constants/bash_formatting.sh
 
 # dante's common aliases
 alias startup="bash /home/dante/scripts/startup.sh"
 alias temps="bash /home/dante/scripts/hardware/temps.sh"
 alias ufwl="sudo cat /var/log/ufw.log"   # ufw logs
+#alias sudop="while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &"
 # alias dc="sudo docker compose up -d"
 
 # dante's common functions & exports
@@ -29,6 +30,7 @@ export -f gcm
 gcp () { gcm ${1} && git pull && git push; }
 export -f gcp
 
+# bash scripts
 bblocks () { bash "/home/dante/scripts/hardware/bad_blocks.sh" ${1}; }
 export -f bblocks
 

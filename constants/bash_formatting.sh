@@ -1,13 +1,13 @@
 # terminal colors
-red="\033[0;31m"
-green="\033[0;32m"
-orange="\033[0;33m"
-yellow="\033[1;33m"
-nocolor="\033[0m"
+export red="\033[0;31m"
+export green="\033[0;32m"
+export orange="\033[0;33m"
+export yellow="\033[1;33m"
+export nocolor="\033[0m"
 
 # bash formatting
-bold="\e[1m"
-italic="\e[3m"
-underline="\e[4m"
-strikethrough="\e[9m"
-noformat="\e[0m"
+export bold="\e[1m"
+export italic="\e[3m"
+export underline="\e[4m"
+export strikethrough="\e[9m"
+export noformat="\e[0m"

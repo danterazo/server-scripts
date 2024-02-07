@@ -17,10 +17,7 @@ bar_length=80
 backup_dir="/media/ts/backups/snapshots"
 tmp_dir="/tmp/plex_restore"
 
-## imports
-source /home/dante/scripts/constants/bash_formatting.sh
-
-## funny goat go baaaaaaa + stop Plex
+## funny goat go brrrrrr + stop Plex
 goatthink -b "Welcome to Dante's Plex restore script."
 
 ## get date+time for desired backup

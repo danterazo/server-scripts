@@ -1,8 +1,7 @@
 #!/bin/bash
 ### wrapper script to query SMART data for given storage device
 
-## common
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## input / arguments

@@ -2,8 +2,7 @@
 ### wrapper script to display formatted temperature data for CPU and attached storage devices
 ### NOTE: for hardware changes, run: sudo sensors-detect
 
-## common
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # constants

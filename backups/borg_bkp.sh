@@ -4,8 +4,7 @@
 ## input / arguments
 mode=${1:-"c"}
 
-## common
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # local variables

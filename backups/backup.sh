@@ -14,8 +14,7 @@ working_dir_ram="/dev/shm/bkp_work"
 bar_constant=1024	# MB. for GB: $((1024 * 1024))
 bar_length=80
 
-## common
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## funny goat go brrrrr + stop Plex

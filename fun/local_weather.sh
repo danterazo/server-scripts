@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 # Prints local weather information for the MOTD
 
 # common constants
-source /home/dante/scripts/constants/bash_formatting.sh
 source /home/dante/scripts/constants/icao.sh
 
 # defaults

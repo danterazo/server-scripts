@@ -15,27 +15,30 @@ geoip_arg=${1:-"f"}
 echo -en "${yellow}"
 
 # print results
-output=""
+city=`curl --silent "https://ipinfo.io/city"`
 if [[ $geoip_arg == "f" ]]; then
     # if given no arguments, print full report
-    output=`curl --silent "https://ipinfo.io/"`
-elif [[ $geoip_arg == "f" ]]; then
-    output=`curl --silent "https://ipinfo.io/region"`
+    curl --silent "https://ipinfo.io/"
+elif [[ $geoip_arg == "r" ]]; then
+    curl --silent "https://ipinfo.io/region"
 else
-    # else, use region
-    output=`curl --silent "https://ipinfo.io/region"`
+    # else, default to region
+    curl --silent "https://ipinfo.io/region"
 fi
 
-echo $output
+echo
 echo
 
 # VPN "check"
 to_check=Minneapolis
-if [[ ${output} != *${to_check}* ]];then
+if [[ ${city} != *${to_check}* ]];then
     # testmystring does not contain c0
-    echo "VPN connected!"
+    echo -en "${green}VPN Connected!"
+else
+    echo -en "${red}VPN Disconnected!"
 fi
 
 
 # end formatting
 echo -e "${nocolor}"
+echo

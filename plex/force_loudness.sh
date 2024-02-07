@@ -1,12 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 ### force loudness analysis on entire Plex music library
 
 ## env variables
 export LD_LIBRARY_PATH=/usr/lib/plexmediaserver:/usr/lib/plexmediaserver/lib
 export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/var/lib/plexmediaserver/Library/Application\ Support
 
-## common constants
-source /home/dante/scripts/constants/bash_formatting.sh
+## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## local constants
