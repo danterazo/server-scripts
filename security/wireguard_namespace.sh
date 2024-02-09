@@ -7,9 +7,8 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 
 # adapter names
 ETHERNET=enp3s0f0
-WIREGUARD=us-co-10
+WIREGUARD=wg0
 WIFI=wlan0
-
 
 # rest
 [[ $UID != 0 ]] && exec sudo -E "$(readlink -f "$0")" "$@"

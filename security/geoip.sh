@@ -9,13 +9,11 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 ## r = region
 geoip_arg=${1:-"f"}
 
-# curl --silent "https://ipinfo.io/"
-
 # formatting
 echo -en "${yellow}"
 
 # print results
-city=`curl --silent "https://ipinfo.io/city"`
+region=`curl --silent "https://ipinfo.io/region"`
 if [[ $geoip_arg == "f" ]]; then
     # if given no arguments, print full report
     curl --silent "https://ipinfo.io/"
@@ -30,10 +28,11 @@ echo
 echo
 
 # VPN "check"
-to_check=Minneapolis
-if [[ ${city} != *${to_check}* ]];then
-    # testmystring does not contain c0
+to_check=Minnesota
+if [[ ${region} != *${to_check}* ]]; then
     echo -en "${green}VPN Connected!"
+elif [[ ! -n ${region} ]]; then
+    echo -en "${orange}VPN Status Unknown; IPInfo Unreachable!"
 else
     echo -en "${red}VPN Disconnected!"
 fi

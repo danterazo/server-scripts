@@ -30,13 +30,14 @@ fi
 echo -e "Stopping Deluge and Wireguard..."
 sudo service deluged stop
 sudo wg-quick down ${wg_service_name}
+echo
 
 # copy
 echo -e "Applying ${orange}${new_wg_profile}${nocolor} profile"
 sudo cp ${wg_profile_src_dir}${new_wg_profile}.conf ${wg_profile_dst_dir}${wg_service_name}.conf
+echo
 
 # restore VPN and deluge
-echo
 echo -e "Starting Deluge and Wireguard..."
 sudo service deluged start
 sudo wg-quick up ${wg_service_name}
