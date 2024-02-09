@@ -4,6 +4,10 @@
 ## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
+## quick check
+sudo wg
+echo
+
 ## input / arguments
 ## f = full
 ## r = region
