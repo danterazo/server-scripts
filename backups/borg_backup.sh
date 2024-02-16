@@ -1,6 +1,9 @@
 #!/bin/sh
 # inspired by: https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
 
+## sudo timeout trick
+source /home/dante/scripts/constants/sudo_timeout.sh
+
 # setting borg-related constants
 export BORG_REPO=/backup
 export BORG_PASSPHRASE=$(head -n 1 /home/dante/.creds/borg)
@@ -15,7 +18,7 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 ## backup
 info "Starting Borg backup"
-borg create                         \
+sudo borg create                    \
     --filter AME                    \
     --list                          \
     --stats                         \
@@ -31,7 +34,7 @@ backup_exit=$?
 
 ## prune
 info "Pruning Borg repository"
-borg prune                          \
+sudo borg prune                     \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
@@ -44,7 +47,7 @@ prune_exit=$?
 
 ## compact
 info "Compacting Borg repository"
-borg compact
+sudo borg compact
 
 compact_exit=$?
 
