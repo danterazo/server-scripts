@@ -18,7 +18,7 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 ## backup
 info "Starting Borg backup"
-sudo borg create                    \
+borg create                    \
     --filter AME                    \
     --list                          \
     --stats                         \
@@ -27,14 +27,14 @@ sudo borg create                    \
     --exclude-caches                \
     --exclude 'var/tmp/*'           \
                                     \
-    ::$ARCHIVENAME                  \
-    /etc /home /root /var /usr/local/bin /usr/local/sbin /srv /opt
+    ::$ARCHIVENAME                \
+    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt
 
 backup_exit=$?
 
 ## prune
 info "Pruning Borg repository"
-sudo borg prune                     \
+borg prune                     \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
@@ -47,7 +47,7 @@ prune_exit=$?
 
 ## compact
 info "Compacting Borg repository"
-sudo borg compact
+borg compact
 
 compact_exit=$?
 
