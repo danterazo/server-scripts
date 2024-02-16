@@ -25,6 +25,9 @@ borg create                    \
     --show-rc                       \
     --compression auto,lz4,9        \
     --exclude-caches                \
+    --exclude '*.ffs_db'            \
+    --exclude '*.ffs_lock'          \
+    --exclude '*.copytemp'          \
     --exclude 'var/tmp/*'           \
                                     \
     ::$ARCHIVENAME                \
