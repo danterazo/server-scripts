@@ -3,9 +3,9 @@
 start_time=$SECONDS
 
 ## input / arguments
-plex_compression=${1:-0}	# default: 0
+plex_compression=${1:-9}	# default: 9 (max compression)
 
-## common variables for all files
+## common variables
 datetime=`date +"%Y-%m-%d_%H-%M-%S"`
 working_dir_nvme="/media/sd/cache/bkp_work"	# og: /tmp/bkp_work
 backup_dir_root="/media/ts/backups/snapshots"	# og: /media/wd00/backups
@@ -52,8 +52,8 @@ sudo dpkg-query -l | sed "s/.*deinstall//" | sudo sed "s/install$//g" > ${backup
 echo -e "${green}Package lists created!${nocolor}\n"
 
 ### backup plex directory. no compression by default since these are mostly images
-plex_appdata_path="/var/lib/plexmediaserver"
-plex_cache_path="/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Cache"	# TODO: deprecate
+plex_appdata_path="/media/cr/plexmediaserver"
+plex_cache_path="/media/cr/plexmediaserver/Library/Application Support/Plex Media Server/Cache"	# TODO: deprecate
 plex_compressed_destination="${backup_dir}/plex_${datetime}_mx${plex_compression}.7z"
 
 ## if mx=0, write tarball directly to backup directory instead of working dir. else, default to latter
