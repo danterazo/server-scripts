@@ -8,8 +8,7 @@ source /home/dante/scripts/constants/bash_formatting.sh
 alias startup="bash /home/dante/scripts/startup.sh"
 alias temps="bash /home/dante/scripts/hardware/temps.sh"
 alias ufwl="sudo cat /var/log/ufw.log"   # ufw logs
-#alias sudop="while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &"
-# alias dc="sudo docker compose up -d"
+# alias sudo='sudo ' # sudo alias trick
 
 # common borg constants
 export BORGPATH="/backup"
@@ -50,7 +49,7 @@ export -f geoip
 rscreen  () { bash "/home/dante/scripts/config/rscreen.sh" ${1}; }
 export -f rscreen
 
-bbkp  () { bash "/home/dante/scripts/backups/borg_backup.sh" ${1}; }
+bbkp  () { sudo bash "/home/dante/scripts/backups/borg_backup.sh" ${1}; }
 export -f bbkp
 
 turbo () { bash "/home/dante/scripts/hardware/toggle_turbo_boost.sh" ${1}; }
