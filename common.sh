@@ -46,7 +46,7 @@ export -f geoip
 rscreen  () { bash "/home/dante/scripts/config/rscreen.sh" ${1}; }
 export -f rscreen
 
-bbkp  () { bash "/home/dante/scripts/backups/borg_bkp.sh" ${1}; }
+bbkp  () { bash "/home/dante/scripts/backups/borg_backup.sh" ${1}; }
 export -f bbkp
 
 turbo () { bash "/home/dante/scripts/hardware/toggle_turbo_boost.sh" ${1}; }
