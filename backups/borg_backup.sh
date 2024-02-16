@@ -1,9 +1,9 @@
 #!/bin/sh
-# forked from: https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
+# inspired by: https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
 
 # setting borg-related constants
 export BORG_REPO=/backup
-export BORG_PASSPHRASE=$BORGPASS
+export BORG_PASSPHRASE=$(head -n 1 /home/dante/.creds/borg)
 
 # archive name
 DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")

@@ -4,14 +4,18 @@
 # source formatting
 source /home/dante/scripts/constants/bash_formatting.sh
 
-# dante's common aliases
+# common aliases
 alias startup="bash /home/dante/scripts/startup.sh"
 alias temps="bash /home/dante/scripts/hardware/temps.sh"
 alias ufwl="sudo cat /var/log/ufw.log"   # ufw logs
 #alias sudop="while true; do sudo -nv; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &"
 # alias dc="sudo docker compose up -d"
 
-# dante's common functions & exports
+# common borg constants
+export BORGPATH="/backup"
+export BORGPASS=$(head -n 1 /home/dante/.creds/borg)
+
+# common functions & exports
 lweather () { bash "/home/dante/scripts/fun/local_weather.sh" ${1}; }
 export -f lweather
 
