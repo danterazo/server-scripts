@@ -18,6 +18,9 @@ git -C /home/dante/scripts/ pull
 #   bash "$f" 
 # done
 
+# perform backup
+bbkp
+
 ## daily wisdom
 goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
