@@ -23,7 +23,7 @@ if [ $new_wg_profile == "noarg" ]; then
     read new_wg_profile
 else
     # else, use given argument
-    new_wg_profile=$default_wg_profile
+    new_wg_profile=${1}
 fi
 
 # bring down VPN and deluge service
