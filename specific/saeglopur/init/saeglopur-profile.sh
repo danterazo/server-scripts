@@ -3,7 +3,7 @@
 
 ## overrides
 # neofetch ASCII art fix
-alias neofetch='neofetch --source /home/dante/ascii/apple.txt'
+alias neofetch='neofetch --source /home/dante/.ascii/apple.txt'
 #alias neofetch='neofetch --ascii_distro macos'
 
 # force IPv4 for apt
