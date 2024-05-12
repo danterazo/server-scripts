@@ -18,7 +18,7 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 ## backup
 info "Starting Borg backup"
-borg create                    \
+borg create                         \
     --filter AME                    \
     --list                          \
     --stats                         \
@@ -37,7 +37,7 @@ backup_exit=$?
 
 ## prune
 info "Pruning Borg repository"
-borg prune                     \
+borg prune                          \
     --list                          \
     --glob-archives '{hostname}-*'  \
     --show-rc                       \
@@ -67,7 +67,3 @@ else
 fi
 
 exit ${global_exit}
-
-# TODO: create borg mount script with these commands:
-# sudo borg mount /backup /mnt/borg-fuse
-# sudo borg umount /mnt/borg-fuse
