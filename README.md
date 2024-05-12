@@ -102,6 +102,10 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
   - Optional parameter for orientation
     - e.g. `rotate_screen 1` to rotate terminal clockwise. Equivalent to `rotate_screen`
 
+
+### Machine-Specific Scripts
+- TODO: write this
+
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
   - Used primarily in my Message of the Day (MOTD). Prints a concise weather report for Bloomington, IN (ICAO: KBMG)
