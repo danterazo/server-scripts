@@ -2,7 +2,7 @@
 ## sourced when new session is opened. contains stuff specific to saeglopur
 
 ## overrides
-# neofetch ASCII art fix
+# neofetch ASCII art update
 alias neofetch='neofetch --source /home/dante/.ascii/apple.txt'
 #alias neofetch='neofetch --ascii_distro macos'
 
