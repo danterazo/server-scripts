@@ -5,9 +5,9 @@
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## source machine-specific startup commands, if any
-source /home/dante/scripts/specific/$(hostname)/$(hostname)-startup.sh
+source /home/dante/scripts/specific/$(hostname)/init/$(hostname)-startup.sh
 
-## get + apply updates
+## get and apply updates
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
