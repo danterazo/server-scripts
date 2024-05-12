@@ -1,5 +1,5 @@
 #!/bin/bash
-### sourced by dante's bash profiles
+### common code to be sourced in machine .profile files
 
 # source formatting
 source /home/dante/scripts/constants/bash_formatting.sh

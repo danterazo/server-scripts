@@ -4,8 +4,8 @@
 ## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
-## source machine-specific code, if any
-source /home/dante/scripts/specific/$(hostname).sh
+## source machine-specific startup commands, if any
+source /home/dante/scripts/specific/$(hostname)/$(hostname)-startup.sh
 
 ## get + apply updates
 sudo apt update -y
