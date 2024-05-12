@@ -104,7 +104,7 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
 
 
 ### Machine-Specific Scripts
-- TODO: write this
+- TODO: write this 
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
