@@ -9,14 +9,5 @@ wp () { wslpath ${1}; }
 export -f wp
 
 # add cd w/ windows path conversion
-cdw() { cd "$(wslpath "$1")"; }
+cdw () { cd $(wslpath "${1}"); }
 export -f cdw
-
-# cd "$(find -name script.py -type f -printf '%h\n' -quit)"
-
-# fn() {
-#     helper1() { : defines another function which it can call; }
-#     helper2() { : and another; }
-#     helper1 "$@" | helper2 "$@"     #processes args twice over pipe
-#     command "$@"; list;             #without altering its args
-# }
