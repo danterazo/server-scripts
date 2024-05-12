@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # TODO: create borg mount script with these commands:

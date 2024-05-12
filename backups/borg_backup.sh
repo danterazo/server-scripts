@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # inspired by: https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
 
 ## sudo timeout trick
