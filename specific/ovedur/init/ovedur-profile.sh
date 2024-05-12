@@ -9,7 +9,7 @@ wp () { wslpath ${1}; }
 export -f wp
 
 # add cd w/ windows path conversion
-cdw() { cd wp; }
+cdw() { cd "$(wslpath "$1")"; }
 export -f cdw
 
 # cd "$(find -name script.py -type f -printf '%h\n' -quit)"
