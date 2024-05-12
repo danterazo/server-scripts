@@ -7,13 +7,22 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 ## source machine-specific startup commands, if any
 source /home/dante/scripts/specific/$(hostname)/init/$(hostname)-startup.sh
 
-## get and apply updates
+## package updates
+# update ubuntu packages
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
+
+# clean up old ubuntu packages
+sudo apt autoremove -y
+
+# update snap packages
 sudo snap refresh
 
-# update git repos
+# update rubygems packages
+gem update
+
+## update git repos
 git -C /home/dante/scripts/ pull
 
 ## use custom update scripts
