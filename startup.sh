@@ -11,7 +11,6 @@ source /home/dante/scripts/specific/$(hostname)/init/$(hostname)-startup.sh
 # update ubuntu packages
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt autoremove -y
 
 # clean up old ubuntu packages
 sudo apt autoremove -y
