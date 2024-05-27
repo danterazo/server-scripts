@@ -13,38 +13,38 @@ DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")
 ARCHIVENAME="$HOSTNAME-system_$DATETIME"
 
 # error handling
-info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
+info() { printf "\n%s %s\n\n" "$(date)" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 ## backup
 info "Starting Borg backup"
-borg create                         \
-    --filter AME                    \
-    --list                          \
-    --stats                         \
-    --show-rc                       \
-    --compression auto,lz4,9        \
-    --exclude-caches                \
-    --exclude '*.ffs_db'            \
-    --exclude '*.ffs_lock'          \
-    --exclude '*.copytemp'          \
-    --exclude 'var/tmp/*'           \
-                                    \
-    ::$ARCHIVENAME                \
+borg create \
+    --filter AME \
+    --list \
+    --stats \
+    --show-rc \
+    --compression auto,lz4,9 \
+    --exclude-caches \
+    --exclude '*.ffs_db' \
+    --exclude '*.ffs_lock' \
+    --exclude '*.copytemp' \
+    --exclude 'var/tmp/*' \
+    \
+    ::$ARCHIVENAME \
     /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt
 
 backup_exit=$?
 
 ## prune
 info "Pruning Borg repository"
-borg prune                          \
-    --list                          \
-    --glob-archives '{hostname}-*'  \
-    --show-rc                       \
-    --keep-daily    7               \
-    --keep-weekly   4               \
-    --keep-monthly  6               \
-    --keep-yearly   1
+borg prune \
+    --list \
+    --glob-archives '{hostname}-*' \
+    --show-rc \
+    --keep-daily 7 \
+    --keep-weekly 4 \
+    --keep-monthly 6 \
+    --keep-yearly 1
 
 prune_exit=$?
 
@@ -55,8 +55,8 @@ borg compact
 compact_exit=$?
 
 # use highest exit code as global exit code
-global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
-global_exit=$(( compact_exit > global_exit ? compact_exit : global_exit ))
+global_exit=$((backup_exit > prune_exit ? backup_exit : prune_exit))
+global_exit=$((compact_exit > global_exit ? compact_exit : global_exit))
 
 if [ ${global_exit} -eq 0 ]; then
     info "Backup, Prune, and Compact finished successfully"

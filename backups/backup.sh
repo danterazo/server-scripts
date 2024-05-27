@@ -3,15 +3,15 @@
 start_time=$SECONDS
 
 ## input / arguments
-plex_compression=${1:-9}	# default: 9 (max compression)
+plex_compression=${1:-9} # default: 9 (max compression)
 
 ## common variables
-datetime=`date +"%Y-%m-%d_%H-%M-%S"`
-working_dir_nvme="/media/sd/cache/bkp_work"	# og: /tmp/bkp_work
-backup_dir_root="/media/ts/backups/snapshots"	# og: /media/wd00/backups
+datetime=$(date +"%Y-%m-%d_%H-%M-%S")
+working_dir_nvme="/media/sd/cache/bkp_work"   # og: /tmp/bkp_work
+backup_dir_root="/media/ts/backups/snapshots" # og: /media/wd00/backups
 backup_dir="${backup_dir_root}/snapshot_${datetime}"
 working_dir_ram="/dev/shm/bkp_work"
-bar_constant=1024	# MB. for GB: $((1024 * 1024))
+bar_constant=1024 # MB. for GB: $((1024 * 1024))
 bar_length=80
 
 ## sudo timeout trick
@@ -19,9 +19,9 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 
 ## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then
-  echo -e "Running backups (tar mode). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
+	echo -e "Running backups (tar mode). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
 else
-  echo -e "Running backups (${orange}mx=${plex_compression}${nocolor}). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
+	echo -e "Running backups (${orange}mx=${plex_compression}${nocolor}). ${yellow}Stopping Plex...${nocolor}" | goatthink -b -W 80
 fi
 sudo service plexmediaserver stop
 
@@ -47,19 +47,19 @@ echo -e "${green}Permissions verified!${nocolor}\n"
 
 ### backup installed packages
 echo "Creating lists of installed packages..."
-sudo dpkg --get-selections | sed "s/.*deinstall//" | sudo sed "s/install$//g" > ${backup_dir}/pkglist_${datetime}.txt
-sudo dpkg-query -l | sed "s/.*deinstall//" | sudo sed "s/install$//g" > ${backup_dir}/pkglist_${datetime}_dpkg.txt
+sudo dpkg --get-selections | sed "s/.*deinstall//" | sudo sed "s/install$//g" >${backup_dir}/pkglist_${datetime}.txt
+sudo dpkg-query -l | sed "s/.*deinstall//" | sudo sed "s/install$//g" >${backup_dir}/pkglist_${datetime}_dpkg.txt
 echo -e "${green}Package lists created!${nocolor}\n"
 
 ### backup plex directory. no compression by default since these are mostly images
 plex_appdata_path="/media/cr/plexmediaserver"
-plex_cache_path="/media/cr/plexmediaserver/Library/Application Support/Plex Media Server/Cache"	# TODO: deprecate
+plex_cache_path="/media/cr/plexmediaserver/Library/Application Support/Plex Media Server/Cache" # TODO: deprecate
 plex_compressed_destination="${backup_dir}/plex_${datetime}_mx${plex_compression}.7z"
 
 ## if mx=0, write tarball directly to backup directory instead of working dir. else, default to latter
 plex_tarball_path="${working_dir_nvme}/plex_${datetime}.tar"
 if [ $plex_compression -eq 0 ]; then
-   plex_tarball_path="${backup_dir}/plex_${datetime}.tar"
+	plex_tarball_path="${backup_dir}/plex_${datetime}.tar"
 fi
 
 ## enable Intel turbo boost temporarily
@@ -68,14 +68,14 @@ turbo enable
 
 ## get estimated size of plex tarball
 echo "Analyzing Plex appdata directory size..."
-plex_appdata_size=`sudo du -sk --exclude="Cache" --apparent-size ${plex_appdata_path} | cut -f 1`
+plex_appdata_size=$(sudo du -sk --exclude="Cache" --apparent-size ${plex_appdata_path} | cut -f 1)
 echo -e "${green}Plex appdata directory analyzed!${nocolor}\n"
 
 ## create plex tarball + print progress bar
 echo "Creating Plex tarball..."
-echo -e -n "Estimated: [`printf %${bar_length}s |tr ' ' '='`] (Estimate: $((plex_appdata_size / bar_constant)) MB)\nProgress:  ["
-sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${plex_appdata_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" --exclude "Application\ Support/Plex\ Media\ Server/Cache" -cPf $plex_tarball_path $plex_appdata_path
-actual_plex_size=`sudo du -sk --apparent-size ${plex_tarball_path} | cut -f 1`
+echo -e -n "Estimated: [$(printf %${bar_length}s | tr ' ' '=')] (Estimate: $((plex_appdata_size / bar_constant)) MB)\nProgress:  ["
+sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=$(echo ${plex_appdata_size}/${bar_length} | bc) --checkpoint-action="ttyout=>" --exclude "Application\ Support/Plex\ Media\ Server/Cache" -cPf $plex_tarball_path $plex_appdata_path
+actual_plex_size=$(sudo du -sk --apparent-size ${plex_tarball_path} | cut -f 1)
 echo -e ">] (Actual:   $((actual_plex_size / bar_constant)) MB)"
 echo -e "${green}Plex tarball created!${nocolor}\n"
 
@@ -95,16 +95,16 @@ echo "Analyzing filesystem size..."
 filesystem_size=0
 while IFS= read -r path; do
 	if ! [[ $path == "--exclude"* ]]; then
-		filesystem_size=$((filesystem_size + `sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --apparent-size $path | cut -f 1`))
+		filesystem_size=$((filesystem_size + $(sudo du -sk --exclude=/var/lib/plexmediaserver --exclude=/var/lock --exclude=/var/run --apparent-size $path | cut -f 1)))
 	fi
-done < /home/dante/.backup_dirs
+done </home/dante/.backup_dirs
 echo -e "${green}Filesystem analyzed!${nocolor}\n"
 
 ## create filesystem tarball + print progress bar
 echo -e "Creating filesystem tarball..."
-echo -e -n "Estimated: [`printf %${bar_length}s |tr ' ' '='`] (Estimate: $((filesystem_size / bar_constant)) MB)\nProgress:  ["
-sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=`echo ${filesystem_size}/${bar_length} | bc` --checkpoint-action="ttyout=>" -cPf ${filesystem_tarball_path} -T /home/dante/.backup_dirs
-actual_filesystem_size=`sudo du -sk --apparent-size ${filesystem_tarball_path} | cut -f 1`
+echo -e -n "Estimated: [$(printf %${bar_length}s | tr ' ' '=')] (Estimate: $((filesystem_size / bar_constant)) MB)\nProgress:  ["
+sudo tar -c --warning="no-file-ignored" --warning="no-file-changed" --record-size=1K --checkpoint=$(echo ${filesystem_size}/${bar_length} | bc) --checkpoint-action="ttyout=>" -cPf ${filesystem_tarball_path} -T /home/dante/.backup_dirs
+actual_filesystem_size=$(sudo du -sk --apparent-size ${filesystem_tarball_path} | cut -f 1)
 echo -e ">] (Actual:   $((actual_filesystem_size / bar_constant)) MB)"
 echo -e "${green}Filesystem tarball created!${nocolor}\n"
 

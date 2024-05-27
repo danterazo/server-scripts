@@ -16,13 +16,13 @@ plex_scanner_path=/usr/lib/plexmediaserver/'Plex Media Scanner'
 scan="true" # either "true", "false", or "force"
 logs="true" # either "true" or "false"
 while getopts 'fvlq' flag; do
-  case "${flag}" in
-    f) scan="force" ;; # toggle force flag in scanner task
-    s) scan="true" ;; # kick off normal scan
-    v) logs="true" ;;	# show logs if "-v" is passed in. V for verbose
-    q) logs="false" ;; # hide logs if "-q". Q for quiet
-    l) scan="false" && logs="true" ;;	# show ONLY logs. don't kick off loudness analysis. just a shortcut
-  esac
+    case "${flag}" in
+    f) scan="force" ;;                # toggle force flag in scanner task
+    s) scan="true" ;;                 # kick off normal scan
+    v) logs="true" ;;                 # show logs if "-v" is passed in. V for verbose
+    q) logs="false" ;;                # hide logs if "-q". Q for quiet
+    l) scan="false" && logs="true" ;; # show ONLY logs. don't kick off loudness analysis. just a shortcut
+    esac
 done
 
 # scan types
@@ -45,5 +45,5 @@ if [ $logs == "true" ]; then
     echo -n -e "${yellow}Printing logs:${nocolor}\n"
     tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log" | grep loudness # grep by default
 else
-    : 
+    :
 fi

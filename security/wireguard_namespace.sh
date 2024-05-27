@@ -52,8 +52,11 @@ command="$1"
 shift
 
 case "$command" in
-    up) up "$@" ;;
-    down) down "$@" ;;
-    exec) execi "$@" ;;
-    *) echo "Usage: $0 up|down|exec" >&2; exit 1 ;;
+up) up "$@" ;;
+down) down "$@" ;;
+exec) execi "$@" ;;
+*)
+    echo "Usage: $0 up|down|exec" >&2
+    exit 1
+    ;;
 esac

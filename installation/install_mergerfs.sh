@@ -6,7 +6,7 @@ source /home/dante/scripts/constants/sudo_timeout.sh
 sudo apt install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
 
 ## clone code
-git clone https://github.com/trapexit/mergerfs.git 
+git clone https://github.com/trapexit/mergerfs.git
 cd mergerfs
 
 ## build

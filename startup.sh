@@ -26,7 +26,7 @@ git -C /home/dante/scripts/ pull
 
 ## use custom update scripts
 # for f in /home/dante/scripts/updates/*.sh; do
-#   bash "$f" 
+#   bash "$f"
 # done
 
 # perform backup
@@ -37,4 +37,4 @@ goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
 
 ## stats
-btop    # new C++ version
+btop # new C++ version

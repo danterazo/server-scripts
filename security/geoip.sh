@@ -17,7 +17,7 @@ geoip_arg=${1:-"f"}
 echo -en "${yellow}"
 
 # print results
-region=`curl --silent "https://ipinfo.io/region"`
+region=$(curl --silent "https://ipinfo.io/region")
 if [[ $geoip_arg == "f" ]]; then
     # if given no arguments, print full report
     curl --silent "https://ipinfo.io/"
@@ -40,7 +40,6 @@ elif [[ ! -n ${region} ]]; then
 else
     echo -en "${red}VPN Disconnected!"
 fi
-
 
 # end formatting
 echo -e "${nocolor}"

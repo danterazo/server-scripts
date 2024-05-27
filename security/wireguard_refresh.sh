@@ -41,4 +41,3 @@ echo
 echo -e "Starting Deluge and Wireguard..."
 sudo service deluged start
 sudo wg-quick up ${wg_service_name}
-

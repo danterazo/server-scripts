@@ -12,7 +12,7 @@ if [[ -z $(which rdmsr) ]]; then
 fi
 
 ## arguments
-mode=${1:-r}	# default: report (r)
+mode=${1:-r} # default: report (r)
 
 # register constants
 register=1a0
@@ -20,15 +20,15 @@ disabled_state=4000850089
 enabled_state=850089
 
 # functions
-disable_turbo () {
+disable_turbo() {
     sudo wrmsr -p0 "0x${register}" "0x${disabled_state}"
 }
 
-enable_turbo () {
+enable_turbo() {
     sudo wrmsr -p0 "0x${register}" "0x${enabled_state}"
 }
 
-toggle_core_turbo () {
+toggle_core_turbo() {
     if [[ $1 -eq $disabled_state ]]; then
         enable_turbo
     elif [[ $1 -eq $enabled_state ]]; then
@@ -39,7 +39,7 @@ toggle_core_turbo () {
 }
 
 # take note of current turbo state
-curr_turbo_state=`sudo rdmsr -p0 0x${register}`
+curr_turbo_state=$(sudo rdmsr -p0 0x${register})
 
 # disable, enable, or toggle state
 if [[ $mode != "report" && $mode != 3 && $mode != "r" ]]; then
@@ -52,7 +52,7 @@ if [[ $mode != "report" && $mode != 3 && $mode != "r" ]]; then
     fi
 
     # verify turbo state
-    new_turbo_state=`sudo rdmsr -p0 0x${register}`
+    new_turbo_state=$(sudo rdmsr -p0 0x${register})
     if [[ $new_turbo_state == $disabled_state ]]; then
         echo -e "${red}Disabled${nocolor} Turbo Boost"
     elif [[ $new_turbo_state == $enabled_state ]]; then
