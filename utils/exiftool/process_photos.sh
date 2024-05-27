@@ -28,11 +28,11 @@ args=(
     '-PreservedFileName<${FileName;s/\..*//}'
 
     # automatically fill attribution fields across EXIF, XMP-DC, XMP-CC, and XMP-Photoshop namespaces
-    -Artist=Dante Razo
-    -Copyright=© Dante Razo
-    -Creator=Dante Razo
-    -CaptionWriter=Dante Razo
-    -Credit=Dante Razo
+    -Artist="Dante Razo"
+    -Copyright="© Dante Razo"
+    -Creator="Dante Razo"
+    -CaptionWriter="Dante Razo"
+    -Credit="Dante Razo"
 )
 
 # execute in working directory + format output
