@@ -61,5 +61,5 @@ export -f wgrf
 exif-proc() { bash "/home/dante/scripts/utils/exiftool/process_photos.sh"; }
 export -f exif-proc
 
-exif-add() { bash "/home/dante/scripts/utils/exiftool/add_metadata.sh"; }
+exif-add() { bash "/home/dante/scripts/utils/exiftool/add_metadata.sh" ${@}; }
 export -f exif-add
