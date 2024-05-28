@@ -4,6 +4,9 @@
 ## scope: current working directory
 ## usage: use after importing (and renaming) photos from camera to Windows using "EOS Utility"
 
+# TODO: review example and apply to script
+# exiftool -xmp:iptc:geolocate="paris,fr" test.jpg
+
 # common exiftool args
 common_args=(
   # performance
