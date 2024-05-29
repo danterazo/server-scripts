@@ -7,7 +7,7 @@
 # define arguments
 args=(
     # "file processed?" criteria
-    -if "not defined $XMP-xmpMM:PreservedFileName"
+    -if 'not defined $XMP-xmpMM:PreservedFileName'
 
     # performance
     -fast2
@@ -28,23 +28,23 @@ args=(
     '-XMP-xmpMM:PreservedFileName<${FileName;s/\..*//}'
 
     # populate focal length FFE tag
-    "-FocalLengthIn35mmFormat<Composite:FocalLength35efl" -n
+    "-ExifIFD:FocalLengthIn35mmFormat<Composite:FocalLength35efl" -n
 
     # note: this returns warnings when run in this script, but not otherwise. ignore them.
     # offline geocoding; update location fields from GPS coordinates
-    "-XMP-photoshop:XMP-iptcCore:XMP-iptcExt:geolocate<Composite:GPSPosition"
+    "-XMP-photoshop:XMP-iptcCore:XMP-iptcExt:Geolocate<Composite:GPSPosition"
 
     # automatically fill attribution fields across EXIF, XMP-DC, XMP-CC, and XMP-Photoshop namespaces
-    -EXIF:artist="Dante Razo"
-    -EXIF:copyright="© Dante Razo"
-    -XMP-dc:creator="Dante Razo"
+    -EXIF:Artist="Dante Razo"
+    -EXIF:Copyright="© Dante Razo"
+    -XMP-dc:Creator="Dante Razo"
     -XMP-cc:AttributionName="Dante Razo"
-    -XMP-photoshop:captionWriter="Dante Razo"
-    -XMP-photoshop:credit="Dante Razo"
+    -XMP-photoshop:CaptionWriter="Dante Razo"
+    -XMP-photoshop:Credit="Dante Razo"
 
     # move metadata to preferred namespaces
-    "-EXIF:all<IFD0:all"
-    "-EXIF:all<ExifIFD:all"
+    "-EXIF:All<IFD0:All"
+    "-EXIF:All<ExifIFD:All"
 )
 
 # execute in working directory + format output
