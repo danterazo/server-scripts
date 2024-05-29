@@ -7,7 +7,7 @@
 # define arguments
 args=(
     # "file processed?" criteria
-    -if "not defined $PreservedFileName"
+    -if "not defined $XMP-xmpMM:PreservedFileName"
 
     # performance
     -fast2
@@ -24,8 +24,8 @@ args=(
     -progress
 
     # preserve original filename
-    '-Title<${FileName;s/\..*//}'
-    '-PreservedFileName<${FileName;s/\..*//}'
+    '-XMP-dc:Title<${FileName;s/\..*//}'
+    '-XMP-xmpMM:PreservedFileName<${FileName;s/\..*//}'
 
     # populate focal length FFE tag
     "-FocalLengthIn35mmFormat<Composite:FocalLength35efl" -n
