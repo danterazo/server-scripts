@@ -8,8 +8,10 @@
 args=(
     # "file processed?" criteria
     -if 'not defined $XMP-xmpMM:PreservedFileName'
+    -if 'not defined $XMP-x:XMPToolkit'
 
     # performance
+    -stay_open True
     -fast2
 
     # scope
@@ -32,7 +34,7 @@ args=(
 
     # note: this returns warnings when run in this script, but not otherwise. ignore them.
     # offline geocoding; update location fields from GPS coordinates
-    "-XMP-photoshop:XMP-iptcCore:XMP-iptcExt:Geolocate<Composite:GPSPosition"
+    '-XMP-photoshop:XMP-iptcCore:XMP-iptcExt:Geolocate<$Composite:GPSPosition'
 
     # automatically fill attribution fields across EXIF, XMP-DC, XMP-CC, and XMP-Photoshop namespaces
     -EXIF:Artist="Dante Razo"
