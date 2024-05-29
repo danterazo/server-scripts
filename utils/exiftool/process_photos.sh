@@ -9,8 +9,6 @@ args=(
     # "file processed?" criteria
     -if "not defined $PreservedFileName"
 
-    # debugging, reinstate above
-
     # performance
     -fast2
 
