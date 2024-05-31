@@ -1,11 +1,13 @@
 #!/bin/bash
-### dante's startup script
+### dante's system startup/update script
 
-## sudo timeout trick
+# sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
-## source machine-specific startup commands, if any
-source /home/dante/scripts/specific/$(hostname)/init/$(hostname)-startup.sh
+# source machine-specific startup commands, if any
+source /home/dante/scripts/config/$(hostname)/startup.sh
+
+# TODO: split incompatible lines into x64-specific startup config
 
 ## package updates
 # update ubuntu packages
@@ -21,11 +23,11 @@ sudo snap refresh
 # update rubygems packages
 gem update
 
-## update git repos
+# update git repos
 git -C /home/dante/scripts/ pull
 
 ## use custom update scripts
-# for f in /home/dante/scripts/updates/*.sh; do
+# for f in /home/dante/scripts/specific/$(hostname)/*.sh; do
 #   bash "$f"
 # done
 
