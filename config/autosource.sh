@@ -8,9 +8,6 @@ ARCH=$(arch | sed -e 's:^x86_64$:x64:' -e 's:^aarch64$:arm64:')
 # define paths
 CONFIG_ROOT="/home/dante/scripts/config"
 
-# assign defaults to string parameters
-FILENAME=""
-
 # assign defaults to policy (bool) parameters
 IS_WSL=false
 IS_VIRTUAL=false
@@ -22,35 +19,25 @@ get_arg() {
   echo "${2:-${1#*=}}"
 }
 
-while [ $# -gt 0 ]; do
-  case $1 in
-    -f | --filename*) FILENAME=$(get_arg $@) ;;
-    -w | --wsl) IS_WSL=true ;;
-    -v | --virtual) IS_VIRTUAL=true ;;
-    -i | --pihole) IS_PIHOLE=true ;;
-    -b | --backup) NEEDS_BACKUP=true ;;
-    *) exit 1 ;;
-  esac
-  shift
+while getopts 'f:wvib' flag; do
+	case "${flag}" in
+        f) FILENAME="${OPTARG}" ;; # -f <str>. arg sets filename to source
+        w) IS_WSL=true ;;
+        v) IS_VIRTUAL=true ;;
+        i) IS_PIHOLE=true ;;
+        b) NEEDS_BACKUP=true ;;
+        *) exit 1 ;;
+	esac
 done
 
-# while getopts 'f:wvib' flag; do
-# 	case "${flag}" in
-#         f) FILENAME="${OPTARG}" ;; # -f <str>. arg sets filename to source
-#         w) IS_WSL=true ;;
-#         v) IS_VIRTUAL=true ;;
-#         i) IS_PIHOLE=true ;;
-#         b) NEEDS_BACKUP=true ;;
-#         *) exit 1 ;;
-# 	esac
-# done
-
+# debugging, to remove
+echo $HOST
+echo $ARCH
 echo $FILENAME
 echo $IS_WSL
 echo $IS_VIRTUAL
 echo $IS_PIHOLE
 echo $NEEDS_BACKUP
-echo $ARCH
 
 # source default code
 source ${CONFIG_ROOT}/default/${FILENAME}.sh
