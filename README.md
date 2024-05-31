@@ -103,7 +103,7 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
     - e.g. `rotate_screen 1` to rotate terminal clockwise. Equivalent to `rotate_screen`
 
 
-### Machine-Specific Scripts
+### Config Scripts
 - TODO: write this 
 
 ### Fun Scripts
@@ -117,11 +117,12 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
   - Example color usage: `${yellow}Example${nocolor}`
   - Example format usage: `${underline}Example${noformat}`
 
+<!-- TODO: refactor common -->
 ### Rest
 - `startup.sh`
   - gets updates and starts `btop`
 - `common.sh`
-  - common exports shared between my machines, sourced by bash profile
+  - common exports shared between my systems, sourced by bash profile
 
 ## TODO
 - Fan control scripts (in `hardware/`) with `lm-sensors`
