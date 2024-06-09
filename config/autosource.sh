@@ -1,5 +1,7 @@
 #!/bin/bash
-## this script, given a few args, sources the desired config files 
+## this script, given a few args, sources the desired config files
+
+# TODO: infer args from hostname. That way, you can change configs for any computer directly from this file
 
 # evaluate variables
 HOST=$(hostname)
@@ -13,31 +15,26 @@ IS_WSL=false
 IS_VIRTUAL=false
 IS_PIHOLE=false
 NEEDS_BACKUP=false
+HAS_BREW=false
+HAS_NVM=false
 
 # parse args
 get_arg() {
-  echo "${2:-${1#*=}}"
+    echo "${2:-${1#*=}}"
 }
 
-while getopts 'f:wvib' flag; do
-	case "${flag}" in
-        f) FILENAME="${OPTARG}" ;; # -f <str>. arg sets filename to source
-        w) IS_WSL=true ;;
-        v) IS_VIRTUAL=true ;;
-        i) IS_PIHOLE=true ;;
-        b) NEEDS_BACKUP=true ;;
-        *) exit 1 ;;
-	esac
+while getopts 'f:bhwvl' flag; do
+    case "${flag}" in
+    f) FILENAME="${OPTARG}" ;; # -f <str>. arg sets filename to source
+    b) NEEDS_BACKUP=true ;;
+    h) HAS_BREW=true ;;
+    w) IS_WSL=true ;;
+    v) IS_VIRTUAL=true ;;
+    l) IS_PIHOLE=true ;;
+    n) HAS_NVM=true ;;
+    *) exit 1 ;;
+    esac
 done
-
-# debugging, to remove
-echo $HOST
-echo $ARCH
-echo $FILENAME
-echo $IS_WSL
-echo $IS_VIRTUAL
-echo $IS_PIHOLE
-echo $NEEDS_BACKUP
 
 # source default code
 source ${CONFIG_ROOT}/default/${FILENAME}.sh
@@ -50,30 +47,49 @@ source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh
 
 # source policies
 if [ "$IS_VIRTUAL" = true ]; then
-    echo "Applying virtual machine policy"
     source ${CONFIG_ROOT}/policy/virtual/${FILENAME}.sh
 fi
 if [ "$IS_WSL" = true ]; then
-    echo "Applying WSL2 machine policy"
     source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh
 fi
 if [ "$IS_PIHOLE" = true ]; then
-    echo "Applying Pihole machine policy"
     source ${CONFIG_ROOT}/policy/pihole/${FILENAME}.sh
 fi
 if [ "$NEEDS_BACKUP" = true ]; then
-    echo "Applying backup policy"
     source ${CONFIG_ROOT}/policy/backup/${FILENAME}.sh
 fi
+if [ "$HAS_BREW" = true ]; then
+    source ${CONFIG_ROOT}/policy/brew/${FILENAME}.sh
+fi
+if [ "$HAS_NVM" = true ]; then
+    source ${CONFIG_ROOT}/policy/nvm/${FILENAME}.sh
+fi
 
-# TODO: refactor code into correct locations
-
-# TODO: "todo tree" colors and recognized keywords
-
-# TODO: docstrings and bash type hints
+# DOC: docstrings and bash type hints
 
 # TODO: write policy files
 
 # TODO: apply changes to saeglopur
 
 # TODO: test on each machine
+
+# TODO: brainstorm better organization scheme
+#       if this were python, I'd just make a dataclass representing each "config".
+
+# TODO
+# DOC
+# BUG
+# DEBUG
+# HACK
+# DEV
+# TEMP
+# QUESTION
+# Q: Testing question comment
+# ?: Another question comment
+# INVESTIGATE: text here
+# !: exclamation
+# IDEA
+# FUTURE
+# NOTE
+# WIP
+# CURRENT

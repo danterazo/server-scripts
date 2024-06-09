@@ -1,5 +1,6 @@
 #!/bin/bash
-## sourced in non-login interactive shells, such as terminals. contains default code from initial Ubuntu installation
+## sourced in non-login interactive shells, such as terminals
+## contains default code from initial Ubuntu installation
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)

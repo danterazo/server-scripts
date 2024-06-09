@@ -1,5 +1,6 @@
 #!/bin/bash
-## sourced upon first login. contains common code for all systems
+## sourced upon first login
+## contains common code for all systems
 
 # source formatting
 source /home/dante/scripts/constants/bash_formatting.sh
