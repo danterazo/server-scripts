@@ -4,3 +4,6 @@
 
 # update gravity-sync (for PiHole)
 gravity-sync update
+
+# update PiHole
+pihole -up
