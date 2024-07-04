@@ -39,7 +39,7 @@ source ${CONFIG_ROOT}/default/${FILENAME}.sh
 # source common code
 source ${CONFIG_ROOT}/common/${FILENAME}.sh
 
-# source architecture
+# source architecture code
 source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh
 
 # source policies
