@@ -1,8 +1,6 @@
 #!/bin/bash
 ## this script, given a few args, sources the desired config files
 
-# TODO: infer args from hostname. That way, you can change configs for any computer directly from this file
-
 # evaluate variables
 HOST=$(hostname)
 ARCH=$(arch | sed -e 's:^x86_64$:x64:' -e 's:^aarch64$:arm64:')
@@ -66,30 +64,3 @@ if [ "$HAS_NVM" = true ]; then
 fi
 
 # DOC: docstrings and bash type hints
-
-# TODO: write policy files
-
-# TODO: apply changes to saeglopur
-
-# TODO: test on each machine
-
-# TODO: brainstorm better organization scheme
-#       if this were python, I'd just make a dataclass representing each "config".
-
-# TODO
-# DOC
-# BUG
-# DEBUG
-# HACK
-# DEV
-# TEMP
-# QUESTION
-# Q: Testing question comment
-# ?: Another question comment
-# INVESTIGATE: text here
-# !: exclamation
-# IDEA
-# FUTURE
-# NOTE
-# WIP
-# CURRENT
