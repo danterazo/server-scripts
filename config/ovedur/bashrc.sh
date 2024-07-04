@@ -4,6 +4,6 @@
 
 ## autosource inherited bashrc code
 FILENAME="bashrc"
-source /home/dante/scripts/config/autosource.sh -f $FILENAME -wv
+source /home/dante/scripts/config/autosource.sh -f $FILENAME -w
 
 ## ovedur-specific bashrc code

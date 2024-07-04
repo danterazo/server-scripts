@@ -4,6 +4,6 @@
 
 ## autosource inherited profile code
 FILENAME="profile"
-source /home/dante/scripts/config/autosource.sh -f $FILENAME -wv
+source /home/dante/scripts/config/autosource.sh -f $FILENAME -w
 
 ## ovedur-specific profile code

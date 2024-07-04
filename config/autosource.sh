@@ -27,7 +27,6 @@ while getopts 'f:bhwvl' flag; do
     b) NEEDS_BACKUP=true ;;
     h) HAS_BREW=true ;;
     w) IS_WSL=true ;;
-    v) IS_VIRTUAL=true ;;
     l) IS_PIHOLE=true ;;
     n) HAS_NVM=true ;;
     *) exit 1 ;;
@@ -44,9 +43,6 @@ source ${CONFIG_ROOT}/common/${FILENAME}.sh
 source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh
 
 # source policies
-if [ "$IS_VIRTUAL" = true ]; then
-    source ${CONFIG_ROOT}/policy/virtual/${FILENAME}.sh
-fi
 if [ "$IS_WSL" = true ]; then
     source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh
 fi
