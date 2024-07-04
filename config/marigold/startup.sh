@@ -4,6 +4,6 @@
 
 ## autosource inherited startup code
 FILENAME="startup"
-source /home/dante/scripts/config/autosource.sh -f $FILENAME -wv
+source /home/dante/scripts/config/autosource.sh -f $FILENAME -w
 
 ## marigold-specific startup code
