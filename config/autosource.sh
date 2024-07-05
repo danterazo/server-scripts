@@ -36,27 +36,26 @@ done
 # source default code
 source ${CONFIG_ROOT}/default/${FILENAME}.sh
 
+# BUG: this doesn't seem to source properly
 # source common code
 source ${CONFIG_ROOT}/common/${FILENAME}.sh
 
 # source architecture code
-source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh
+source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh >/dev/null 2>&1
 
 # source policies
 if [ "$IS_WSL" = true ]; then
-    source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh
+    source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh >/dev/null 2>&1
 fi
 if [ "$IS_PIHOLE" = true ]; then
-    source ${CONFIG_ROOT}/policy/pihole/${FILENAME}.sh
+    source ${CONFIG_ROOT}/policy/pihole/${FILENAME}.sh >/dev/null 2>&1
 fi
 if [ "$NEEDS_BACKUP" = true ]; then
-    source ${CONFIG_ROOT}/policy/backup/${FILENAME}.sh
+    source ${CONFIG_ROOT}/policy/backup/${FILENAME}.sh >/dev/null 2>&1
 fi
 if [ "$HAS_BREW" = true ]; then
-    source ${CONFIG_ROOT}/policy/brew/${FILENAME}.sh
+    source ${CONFIG_ROOT}/policy/brew/${FILENAME}.sh >/dev/null 2>&1
 fi
 if [ "$HAS_NVM" = true ]; then
-    source ${CONFIG_ROOT}/policy/nvm/${FILENAME}.sh
+    source ${CONFIG_ROOT}/policy/nvm/${FILENAME}.sh >/dev/null 2>&1
 fi
-
-# DOC: docstrings and bash type hints
