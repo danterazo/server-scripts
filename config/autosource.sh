@@ -45,17 +45,17 @@ source ${CONFIG_ROOT}/arch/${ARCH}/${FILENAME}.sh >/dev/null 2>&1
 
 # source policies
 if [ "$IS_WSL" = true ]; then
-    source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh >/dev/null 2>&1
+    source ${CONFIG_ROOT}/policy/wsl2/${FILENAME}.sh
 fi
 if [ "$IS_PIHOLE" = true ]; then
-    source ${CONFIG_ROOT}/policy/pihole/${FILENAME}.sh >/dev/null 2>&1
+    source ${CONFIG_ROOT}/policy/pihole/${FILENAME}.sh
 fi
 if [ "$NEEDS_BACKUP" = true ]; then
-    source ${CONFIG_ROOT}/policy/backup/${FILENAME}.sh >/dev/null 2>&1
+    source ${CONFIG_ROOT}/policy/backup/${FILENAME}.sh
 fi
 if [ "$HAS_BREW" = true ]; then
-    source ${CONFIG_ROOT}/policy/brew/${FILENAME}.sh >/dev/null 2>&1
+    source ${CONFIG_ROOT}/policy/brew/${FILENAME}.sh
 fi
 if [ "$HAS_NVM" = true ]; then
-    source ${CONFIG_ROOT}/policy/nvm/${FILENAME}.sh >/dev/null 2>&1
+    source ${CONFIG_ROOT}/policy/nvm/${FILENAME}.sh
 fi
