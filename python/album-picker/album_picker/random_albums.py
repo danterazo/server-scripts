@@ -1,5 +1,8 @@
+from tabulate import tabulate
+from IPython.display import display
 import discogs_client
 import pandas as pd
+from dataclasses import dataclass
 
 # setup session
 dc = discogs_client.Client("DanteAlbumPicker/0.1")
@@ -13,11 +16,12 @@ print(inventory.count)
 
 # Format: Artist - Album (Year)
 
-# print results
+# results mockup
 cds: list[str] = ["The Ocean Blue - Beneath the Rhythm and Sound (1991)", "The Ocean Blue - Cerulean (1XXX)", "CD3"]
-records: list[str] = ["TOB - Record1", 
+records: list[str] = ["TOB - Record1",
                       "TOB - Record2"]
 cassettes: list[str] = ["TOB - Cassette"]
+
 
 @dataclass
 def album():
@@ -39,17 +43,16 @@ def album():
 # print(f"\nCassettes:\n")
 # print(*cassettes, sep="\n")
 
-df = pd.DataFrame(list(zip(cds, records, cassettes)), 
+
+df = pd.DataFrame(list(zip(cds, records, cassettes)),
                   columns=["CDs", "Records", "Vinyl"])
 
-from IPython.display import display
-from tabulate import tabulate
-print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
+print(tabulate(df, headers='keys', tablefmt='psql'))
 display(df)
 
 # table_data = [
 #     ['CDs', 'Vinyl', 'Cassette'],
-#     ['The Ocean Blue - Beneath the Rhythm and Sound (1991)', 'b', 'c'], 
+#     ['The Ocean Blue - Beneath the Rhythm and Sound (1991)', 'b', 'c'],
 #     ['aaaaa', 'bbbbbbbbbb', 'c']
 # ]
 
