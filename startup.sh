@@ -5,9 +5,7 @@
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # source machine-specific startup commands, if any
-source /home/dante/scripts/config/$(hostname)/startup.sh
-
-# TODO: split incompatible lines into x64-specific startup config
+# source /home/dante/scripts/config/$(hostname)/startup.sh
 
 ## package updates
 # update ubuntu packages
@@ -26,17 +24,17 @@ gem update
 # update git repos
 git -C /home/dante/scripts/ pull
 
-## use custom update scripts
+# use custom update scripts
 # for f in /home/dante/scripts/specific/$(hostname)/*.sh; do
 #   bash "$f"
 # done
 
-# perform backup
+# perform Borg backup
 bbkp
 
-## daily wisdom
+# print daily wisdom
 goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
 #sleep 3
 
-## stats
+# display stats
 btop # new C++ version
