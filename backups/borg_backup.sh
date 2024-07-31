@@ -31,7 +31,7 @@ borg create \
     --exclude 'var/tmp/*' \
     \
     ::$ARCHIVENAME \
-    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt
+    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt /self-hosted /ansible
 
 backup_exit=$?
 
