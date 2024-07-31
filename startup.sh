@@ -4,8 +4,8 @@
 # sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
-# source machine-specific startup commands, if any
-# source /home/dante/scripts/config/$(hostname)/startup.sh
+# reduce console logging
+sudo demsg -n 1
 
 ## package updates
 # update ubuntu packages
