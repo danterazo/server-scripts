@@ -5,7 +5,7 @@
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # reduce console logging
-sudo demsg -n 1
+sudo dmesg -n 1
 
 ## package updates
 # update ubuntu packages
