@@ -8,4 +8,4 @@ for cfip in `curl -sw '\n' https://www.cloudflare.com/ips-v{4,6}`; do ufw allow 
 # for cfip in `curl -sw '\n' https://www.cloudflare.com/ips-v{4,6}`; do ufw delete allow proto tcp from $cfip to any port 80,443 comment "Cloudflare IP"; done
 
 # reload ufw
-ufw reload > /dev/null
+ufw reload #> /dev/null
