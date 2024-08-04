@@ -19,7 +19,7 @@ sudo apt autoremove -y
 sudo snap refresh
 
 # update rubygems packages
-gem update
+sudo gem update
 
 # update git repos
 git -C /home/dante/scripts/ pull
