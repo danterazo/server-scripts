@@ -126,9 +126,6 @@ fi
 # rust
 # . "$HOME/.cargo/env"
 
-# starship config
-export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
-
 # created by `pipx` on 2024-07-15 12:21:53
 export PATH="$PATH:/home/dante/.local/bin"
 
@@ -136,3 +133,7 @@ export PATH="$PATH:/home/dante/.local/bin"
 if [ "x${SSH_TTY}" = "x" ]; then
   /usr/bin/local/rpiplay -n Smáskífa -a analog
 fi
+
+# enable starship
+export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
+eval "$(starship init bash)"

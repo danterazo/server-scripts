@@ -126,8 +126,9 @@ fi
 # rust
 # . "$HOME/.cargo/env"
 
-# starship config
-export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
-
 # created by `pipx` on 2024-07-15 12:21:53
 export PATH="$PATH:/home/dante/.local/bin"
+
+# enable starship
+export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
+eval "$(starship init bash)"

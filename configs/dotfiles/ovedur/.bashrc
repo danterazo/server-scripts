@@ -140,11 +140,12 @@ export PATH=$PATH:/usr/local/opt/tcl-tk/bin
 # ble.sh. Enables right-hand-side prints, enhanced autocompletions, and more
 #source ~/.local/share/blesh/ble.sh
 
-# change default starship config path
-export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
-
 # golang
 export PATH=$PATH:/usr/local/go/bin
 
 # qmk
 export QMK_HOME="/home/dante/projects/qmk/firmware"
+
+# enable starship
+export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
+eval "$(starship init bash)"
