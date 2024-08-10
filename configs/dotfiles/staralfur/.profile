@@ -85,6 +85,9 @@ export -f exif-proc
 exif-add() { bash "/home/dante/scripts/utils/exiftool/add_metadata.sh" ${@}; }
 export -f exif-add
 
+dx() { sudo docker exec -it ${1} /bin/bash; }
+export -f dx
+
 ## scala
 # >>> JVM installed by coursier >>>
 export JAVA_HOME="/home/dante/.cache/coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.23%252B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.23_9.tar.gz/jdk-11.0.23+9"
