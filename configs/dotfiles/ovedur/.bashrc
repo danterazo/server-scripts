@@ -121,7 +121,7 @@ if ! shopt -oq posix; then
 fi
 
 # source machine-specific bashrc code
-source /home/dante/scripts/config/$(hostname)/bashrc.sh
+# source /home/dante/scripts/config/$(hostname)/bashrc.sh
 
 # rust
 . "$HOME/.cargo/env"
