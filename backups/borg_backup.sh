@@ -29,9 +29,11 @@ borg create \
     --exclude '*.ffs_lock' \
     --exclude '*.copytemp' \
     --exclude 'var/tmp/*' \
+    --exclude '/self-hosted/nextcloud/backups' \
+    --exclude '/self-hosted/nextcloud/data' \
     \
     ::$ARCHIVENAME \
-    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt /self-hosted /ansible
+    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt /self-hosted /ansible /self-hosted/planka/db /self-hosted/nextcloud /self-hosted/nginx-proxy-manager
 
 backup_exit=$?
 
