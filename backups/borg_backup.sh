@@ -5,7 +5,7 @@
 source /home/dante/scripts/constants/sudo_timeout.sh
 
 # setting borg-related constants
-export BORG_REPO=/backup
+export BORG_REPO=/borg-backup
 export BORG_PASSPHRASE=$(head -n 1 /home/dante/.creds/borg)
 
 # archive name
@@ -19,7 +19,7 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 ## backup
 info "Starting Borg backup"
 borg create \
-    --filter ACME \
+    --filter AME \
     --list \
     --stats \
     --show-rc \
