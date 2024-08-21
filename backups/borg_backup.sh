@@ -19,7 +19,7 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 ## backup
 info "Starting Borg backup"
 borg create \
-    --filter AME \
+    --filter ACME \
     --list \
     --stats \
     --show-rc \
