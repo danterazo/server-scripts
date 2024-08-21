@@ -23,7 +23,7 @@ borg create \
     --list \
     --stats \
     --show-rc \
-    --compression auto,lz4,9 \
+    --compression auto,lzma,9 \
     --exclude-caches \
     --exclude '*.ffs_db' \
     --exclude '*.ffs_lock' \
