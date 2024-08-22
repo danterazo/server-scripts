@@ -1,26 +1,13 @@
 #!/bin/bash
 ## a collection of common functions
 
+# wrappers & shorthand
 rcow() { cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n 1) "${1:-No input!}"; }
 export -f rcow
 
 gtb() { goatthink -b "${1:-No input!}"; }
 export -f gtb
 
-backup() { bash "${SCRIPTS_ROOT}/backups/backup.sh" ${1}; }
-export -f backup
-
-gcp() { gcm ${1} && git pull && git push; }
-export -f gcp
-
-# docker
-dx() { sudo docker exec -it ${1} /bin/bash; }
-export -f dx
-
-dxs() { sudo docker exec -it ${1} /bin/sh; }
-export -f dxs
-
-# shell scripts
 sudo-timeout() {
     while true; do
         sudo -nv
@@ -30,8 +17,21 @@ sudo-timeout() {
 }
 export -f sudo-timeout
 
+gcp() { gcm ${1} && git pull && git push; }
+export -f gcp
+
+dx() { sudo docker exec -it ${1} /bin/bash; }
+export -f dx
+
+dxs() { sudo docker exec -it ${1} /bin/sh; }
+export -f dxs
+
+# shell scripts
 startup() { bash "${SCRIPTS_ROOT}/startup.sh"; }
 export -f startup
+
+backup() { bash "${SCRIPTS_ROOT}/backups/backup.sh" ${1}; }
+export -f backup
 
 lweather() { bash "${SCRIPTS_ROOT}/fun/local_weather.sh" ${1}; }
 export -f lweather
