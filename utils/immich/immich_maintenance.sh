@@ -51,3 +51,6 @@ do
     fi
     
 done < ${UNTRACKED_FILE_EXPORT}
+
+# exit virtual environment
+deactivate
