@@ -1,6 +1,7 @@
 #!/bin/bash
 ## a collection of common aliases
 
+# system
 alias ufwl="sudo cat /var/log/ufw.log" # ufw logs
 alias myip="curl https://ipinfo.io/ip
 
