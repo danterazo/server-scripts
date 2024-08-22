@@ -46,9 +46,6 @@ export -f gtb
 backup() { bash "${SCRIPTS_ROOT}/backups/backup.sh" ${1}; }
 export -f backup
 
-gcm() { git commit -m ${1}; }
-export -f gcm
-
 gcp() { gcm ${1} && git pull && git push; }
 export -f gcp
 
