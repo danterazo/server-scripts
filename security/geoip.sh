@@ -4,7 +4,7 @@
 ## sudo timeout trick
 sudo-timeout
 
-## quick VPN connection check
+## quick VPN connection check, for systems with Wireguard
 sudo wg
 echo
 
