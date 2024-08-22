@@ -20,7 +20,7 @@ export -f dx
 dxs() { sudo docker exec -it ${1} /bin/sh; }
 export -f dxs
 
-# bash scripts
+# shell scripts
 sudo-timeout() {
     while true; do
         sudo -nv
