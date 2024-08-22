@@ -6,7 +6,11 @@ sudo-timeout
 
 ## quick VPN connection check, for systems with Wireguard
 echo "Checking WireGuard status..."
-sudo wg
+if sudo wg; then
+    true # pass
+else
+    echo -e "${RED}WireGuard not installed!${NOCOLOR}"
+fi
 echo
 
 ## input / arguments
