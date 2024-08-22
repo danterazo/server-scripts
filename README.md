@@ -102,27 +102,23 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
   - Optional parameter for orientation
     - e.g. `rotate_screen 1` to rotate terminal clockwise. Equivalent to `rotate_screen`
 
-
+<!-- TODO: update -->
 ### Config Scripts
-- TODO: write this 
+- Bash formatting
+  - Contains color and style codes for use in prints
+  - Example color usage: `${YELLOW}Example${NOCOLOR}`
+  - Example format usage: `${underline}Example${noformat}`
 
 ### Fun Scripts
 - `local_weather.sh` (alias: `lweather`)
   - Used primarily in my Message of the Day (MOTD). Prints a concise weather report for Bloomington, IN (ICAO: KBMG)
   - Optional verbose (`v`) flag to return slightly longer weather report
 
-### Constants
-- `bash_formatting.sh`
-  - Contains color and style codes for use in prints
-  - Example color usage: `${yellow}Example${nocolor}`
-  - Example format usage: `${underline}Example${noformat}`
 
-<!-- TODO: refactor common -->
+<!-- TODO: refactor -->
 ### Rest
 - `startup.sh`
   - gets updates and starts `btop`
-- `common.sh`
-  - common exports shared between my systems, sourced by bash profile
 
 ## TODO
 - Fan control scripts (in `hardware/`) with `lm-sensors`
