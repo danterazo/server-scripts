@@ -3,7 +3,7 @@
 
 # system
 alias ufwl="sudo cat /var/log/ufw.log" # ufw logs
-alias myip="curl https://ipinfo.io/ip
+alias myip="curl https://ipinfo.io/ip"
 
 # git
 alias gcm="git commit -m"
