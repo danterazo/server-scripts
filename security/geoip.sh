@@ -17,15 +17,15 @@ SCRIPT_ARG=${1:-"f"}
 echo -en "${YELLOW}"
 
 # print results
-REGION=$(curl --silent "https://ipinfo.io/REGION")
+REGION=$(curl --silent "https://ipinfo.io/region")
 if [[ "${SCRIPT_ARG}" == "f" ]]; then
     # if given no arguments, print full report
     curl --silent "https://ipinfo.io/"
 elif [[ "${SCRIPT_ARG}" == "r" ]]; then
-    curl --silent "https://ipinfo.io/REGION"
+    curl --silent "https://ipinfo.io/region"
 else
     # else, default to REGION
-    curl --silent "https://ipinfo.io/REGION"
+    curl --silent "https://ipinfo.io/region"
 fi
 
 echo
