@@ -5,10 +5,8 @@
 source /home/dante/scripts/constants/icao.sh
 
 # defaults
-#city="Bloomington, IN"
-#ICAO="KBMG"
 city="Minneapolis, MN"
-ICAO=$mplsICAO
+ICAO="${MinneapolisICAO}"
 
 # weather report
 echo "Current conditions in ${city} (${ICAO}):"
