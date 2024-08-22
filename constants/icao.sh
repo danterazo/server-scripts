@@ -1,2 +1,0 @@
-btownICAO="KBMG"
-mplsICAO="KMSP"
