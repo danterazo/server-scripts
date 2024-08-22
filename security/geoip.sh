@@ -5,6 +5,7 @@
 sudo-timeout
 
 ## quick VPN connection check, for systems with Wireguard
+echo "Checking WireGuard status..."
 sudo wg
 echo
 
