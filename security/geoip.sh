@@ -2,7 +2,7 @@
 ### script for IP geolocation
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 ## quick check
 sudo wg

@@ -2,7 +2,7 @@
 # inspired by: https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 # setting borg-related constant
 export BORG_REPO=/borg-backup

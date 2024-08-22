@@ -1,6 +1,6 @@
 #!/bin/bash
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 ## install prereqs
 sudo apt install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y

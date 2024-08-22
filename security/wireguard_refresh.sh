@@ -2,7 +2,7 @@
 ### script to update wireguard configs
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 ## constants
 wg_profile_src_dir=/home/dante/.config/wireguard/

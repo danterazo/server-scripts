@@ -3,7 +3,7 @@
 ### heavily modified from: http://notepad2.blogspot.com/2014/11/a-script-to-turn-off-intel-cpu-turbo.html
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 # requirement check
 if [[ -z $(which rdmsr) ]]; then

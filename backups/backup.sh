@@ -15,7 +15,7 @@ bar_constant=1024 # MB. for GB: $((1024 * 1024))
 bar_length=80
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 ## funny goat go brrrrr + stop Plex
 if [ $plex_compression -eq 0 ]; then

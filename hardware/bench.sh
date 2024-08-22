@@ -2,7 +2,7 @@
 ### wrapper script to benchmark given storage device
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 ## input / arguments
 drive_arg=${1:-"noarg"}

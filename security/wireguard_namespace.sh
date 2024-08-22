@@ -3,7 +3,7 @@
 set -ex
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 # adapter names
 ETHERNET=enp3s0f0

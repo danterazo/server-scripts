@@ -2,7 +2,7 @@
 ### dante's system startup/update script
 
 # sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 # reduce console logging
 sudo dmesg -n 1

@@ -3,7 +3,7 @@
 ### NOTE: for hardware changes, run: sudo sensors-detect
 
 ## sudo timeout trick
-source /home/dante/scripts/constants/sudo_timeout.sh
+sudo-timeout
 
 # constants
 cpu_name=$(lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\1/p') # for sed
