@@ -4,13 +4,13 @@
 ## sudo timeout trick
 sudo-timeout
 
-## quick check
+## quick VPN connection check
 sudo wg
 echo
 
 ## input / arguments
-## f = full
-## r = REGION
+## f -> full report
+## r -> region-specific report
 SCRIPT_ARG=${1:-"f"}
 
 # formatting
