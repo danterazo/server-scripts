@@ -8,7 +8,7 @@ sudo-timeout
 export BORG_REPO=/borg-backup
 
 # retrieve borg credential
-export BORG_PASSPHRASE=${BORGPASS}
+export BORG_PASSPHRASE=$(sudo cat /home/dante/.creds/borg)
 
 # archive name
 DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")
