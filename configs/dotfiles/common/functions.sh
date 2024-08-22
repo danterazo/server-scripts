@@ -69,4 +69,5 @@ export -f exif-add
 immich-clean() { bash "${SCRIPTS_ROOT}/utils/immich/immich_maintenance.sh"; }
 export -f immich-clean
 
-
+cloudflare-ufw() { bash "${SCRIPTS_ROOT}/security/ufw_cloudflare.sh"; }
+export -f cloudflare-ufw
