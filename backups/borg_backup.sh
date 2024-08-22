@@ -4,9 +4,11 @@
 ## sudo timeout trick
 source /home/dante/scripts/constants/sudo_timeout.sh
 
-# setting borg-related constants
+# setting borg-related constant
 export BORG_REPO=/borg-backup
-export BORG_PASSPHRASE=$(head -n 1 /home/dante/.creds/borg)
+
+# retrieve borg credential
+export BORG_PASSPHRASE=${BORGPASS}
 
 # archive name
 DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")
