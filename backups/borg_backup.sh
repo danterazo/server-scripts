@@ -35,7 +35,7 @@ borg create \
     --exclude '/self-hosted/nextcloud/data' \
     \
     ::$ARCHIVENAME \
-    /etc /root /var /usr/local/bin /usr/local/sbin /srv /opt /self-hosted /ansible
+    /etc /root /var /opt /srv /usr/local/bin /usr/local/sbin /self-hosted /ansible
 
 backup_exit=$?
 
