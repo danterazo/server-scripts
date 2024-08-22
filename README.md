@@ -96,14 +96,13 @@ Maybe they'll inspire you and your scripts. I'm just hosting them here for versi
     - `bash force_loudness.sh -f`: kick off loudness deep analysis scan and show logs
     - `bash force_loudness.sh -fv`: same as above
 
+<!-- TODO: update -->
+
 ### Config Scripts
 - `rotate_screen.sh`
   - Rotates the terminal 90 degrees clockwise by default. Useful when I'm using the Rasberry Pi with my vertical monitor
   - Optional parameter for orientation
     - e.g. `rotate_screen 1` to rotate terminal clockwise. Equivalent to `rotate_screen`
-
-<!-- TODO: update -->
-### Config Scripts
 - Bash formatting
   - Contains color and style codes for use in prints
   - Example color usage: `${YELLOW}Example${NOCOLOR}`

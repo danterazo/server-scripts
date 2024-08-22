@@ -10,32 +10,32 @@ echo
 
 ## input / arguments
 ## f = full
-## r = region
-geoip_arg=${1:-"f"}
+## r = REGION
+SCRIPT_ARG=${1:-"f"}
 
 # formatting
 echo -en "${YELLOW}"
 
 # print results
-region=$(curl --silent "https://ipinfo.io/region")
-if [[ $geoip_arg == "f" ]]; then
+REGION=$(curl --silent "https://ipinfo.io/REGION")
+if [[ $SCRIPT_ARG == "f" ]]; then
     # if given no arguments, print full report
     curl --silent "https://ipinfo.io/"
-elif [[ $geoip_arg == "r" ]]; then
-    curl --silent "https://ipinfo.io/region"
+elif [[ $SCRIPT_ARG == "r" ]]; then
+    curl --silent "https://ipinfo.io/REGION"
 else
-    # else, default to region
-    curl --silent "https://ipinfo.io/region"
+    # else, default to REGION
+    curl --silent "https://ipinfo.io/REGION"
 fi
 
 echo
 echo
 
-# VPN "check"
-to_check=Minnesota
-if [[ ${region} != *${to_check}* ]]; then
+# VPN check
+TO_CHECK=Minnesota
+if [[ ${REGION} != *${TO_CHECK}* ]]; then
     echo -en "${GREEN}VPN Connected!"
-elif [[ ! -n ${region} ]]; then
+elif [[ ! -n ${REGION} ]]; then
     echo -en "${ORANGE}VPN Status Unknown; IPInfo Unreachable!"
 else
     echo -en "${RED}VPN Disconnected!"
