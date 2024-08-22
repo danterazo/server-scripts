@@ -13,7 +13,23 @@ export -f backup
 gcp() { gcm ${1} && git pull && git push; }
 export -f gcp
 
+# docker
+dx() { sudo docker exec -it ${1} /bin/bash; }
+export -f dx
+
+dxs() { sudo docker exec -it ${1} /bin/sh; }
+export -f dxs
+
 # bash scripts
+sudo-timeout() {
+    while true; do
+        sudo -nv
+        sleep 60
+        kill -0 "$$" || exit
+    done 2>/dev/null &
+}
+export -f sudo-timeout
+
 startup() { bash "${SCRIPTS_ROOT}/startup.sh"; }
 export -f startup
 
@@ -50,20 +66,7 @@ export -f exif-proc
 exif-add() { bash "${SCRIPTS_ROOT}/utils/exiftool/add_metadata.sh" ${@}; }
 export -f exif-add
 
-dx() { sudo docker exec -it ${1} /bin/bash; }
-export -f dx
-
-dxs() { sudo docker exec -it ${1} /bin/sh; }
-export -f dxs
-
 immich-clean() { bash "${SCRIPTS_ROOT}/utils/immich/immich_maintenance.sh"; }
 export -f immich-clean
 
-sudo-timeout() {
-    while true; do
-    sudo -nv
-    sleep 60
-    kill -0 "$$" || exit
-done 2>/dev/null &
-}
-export -f sudo-timeout
+
