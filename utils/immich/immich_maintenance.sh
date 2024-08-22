@@ -46,7 +46,7 @@ do
         # increment accumulator
         CURRENT_LINE=$(expr ${CURRENT_LINE} + 1)
     else
-        echo -e "${RED}${BOLD}Unable to delete file! Exiting.${NC}\n"
+        echo -e "[${RED}]${BOLD}Unable to delete file! Exiting.${NC}\n"
         exit 1
     fi
     

@@ -28,21 +28,21 @@ done
 # scan types
 if [ $scan == "true" ]; then
     # kick off normal scan (potentially not as thorough)
-    echo -n -e "${orange}Loudness analysis job started!${nocolor}\n"
+    echo -n -e "${ORANGE}Loudness analysis job started!${NOCOLOR}\n"
     $plex_scanner_path --analyze-loudness --section $plex_music_lib &
 elif [ $scan == "force" ]; then
     # kick off forced scan
-    echo -n -e "${orange}Loudness analysis job started!${nocolor}\n"
+    echo -n -e "${ORANGE}Loudness analysis job started!${NOCOLOR}\n"
     $plex_scanner_path --analyze-loudness --section $plex_music_lib --force &
 else
     # if given "false" or no argument, skip scan
-    echo -n -e "${red}Skipped loudness analysis.${nocolor}\n"
+    echo -n -e "${RED}Skipped loudness analysis.${NOCOLOR}\n"
 fi
 
 # logs display
 if [ $logs == "true" ]; then
     # if given "true" OR no arguments, watch logs (work doesn't appear in the Plex GUI)
-    echo -n -e "${yellow}Printing logs:${nocolor}\n"
+    echo -n -e "${YELLOW}Printing logs:${NOCOLOR}\n"
     tail -f "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log" | grep loudness # grep by default
 else
     :

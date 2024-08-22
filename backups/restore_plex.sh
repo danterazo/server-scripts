@@ -33,19 +33,19 @@ time=$(cut -d"_" -f2 <<<${backup_datetime} | sed 's/^0*//' | tr - :)
 
 # get confirmation from user, then proceed with restore
 if [[ -f "${backup_dir}/snapshot_${backup_datetime}/${plex_backup_file}" ]]; then
-	echo -n -e "\n${green}Backup found!${nocolor} "
+	echo -n -e "\n${GREEN}Backup found!${NOCOLOR} "
 	read -r -p "Are you sure you want to restore the Plex snapshot from ${date} @ ${time}? (y/n) "
 
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		est_minutes=14
 
-		echo -n -e "Process will take ${yellow}~${est_minutes}m${nocolor} to finish. ${red}DO NOT${nocolor} power off the machine, quit this script, or close this session until the restore is complete. "
+		echo -n -e "Process will take ${YELLOW}~${est_minutes}m${NOCOLOR} to finish. ${RED}DO NOT${NOCOLOR} power off the machine, quit this script, or close this session until the restore is complete. "
 		read -r -p "Do you accept? (y/n) "
 		if [[ $REPLY =~ ^[Yy]$ ]]; then
 			echo -e "\nStarting restore...\n"
 			echo "Shutting down Plex..."
 			sudo service plexmediaserver stop
-			echo -e "${green}Plex stopped!${nocolor}\n"
+			echo -e "${GREEN}Plex stopped!${NOCOLOR}\n"
 
 			## common paths
 			plex_appdata_path="/var/lib/plexmediaserver/"
@@ -57,7 +57,7 @@ if [[ -f "${backup_dir}/snapshot_${backup_datetime}/${plex_backup_file}" ]]; the
 			## uncompress Plex 7z archive -> tarball
 			echo -e "Extracting Plex backup..."
 			7z x $plex_archive_path -o${tmp_dir}
-			echo -e "\n${green}Backup extracted!${nocolor}\n"
+			echo -e "\n${GREEN}Backup extracted!${NOCOLOR}\n"
 
 			## get size of Plex tarball
 			plex_tarball_size=$(du -sk --apparent-size $plex_tarball_path | cut -f 1)
@@ -65,7 +65,7 @@ if [[ -f "${backup_dir}/snapshot_${backup_datetime}/${plex_backup_file}" ]]; the
 			## wipe Plex appdata directory
 			echo "Wiping Plex appdata directory..."
 			sudo rm -rf ${plex_appdata_path}*
-			echo -e "${green}Plex appdata directory successfully wiped!${nocolor}\n"
+			echo -e "${GREEN}Plex appdata directory successfully wiped!${NOCOLOR}\n"
 
 			## progress bar for Plex tarball creation
 			echo "Restoring Plex backup..."
@@ -74,23 +74,23 @@ if [[ -f "${backup_dir}/snapshot_${backup_datetime}/${plex_backup_file}" ]]; the
 			sudo tar --record-size=1K --checkpoint=$(echo ${plex_tarball_size}/${bar_length} | bc) --checkpoint-action="ttyout=>" -xPf $plex_tarball_path $plex_appdata_path
 			restore_size=$(sudo du -sk --apparent-size ${plex_appdata_path} | cut -f 1)
 			echo -e "] (Written: $((restore_size / bar_constant)) GB)\n"
-			echo -e "${green}Successfully restored backup! ${nocolor}\n"
+			echo -e "${GREEN}Successfully restored backup! ${NOCOLOR}\n"
 
 			## change ownership of Plex appdata folder
 			echo "Modifying ownership of Plex appdata directory..."
 			sudo chown -R plex:plex /var/lib/plexmediaserver
-			echo -e "${green}Ownership restored!${nocolor}\n"
+			echo -e "${GREEN}Ownership restored!${NOCOLOR}\n"
 
 			## remove residual files from previous installation
 			echo "Removing cache database files from last backup..."
 			sudo rm -f ${plex_appdata_path}/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/*.db-shm
 			sudo rm -f ${plex_appdata_path}/Plug-in\ Support/Databases/*.db-wal
-			echo -e "${green}Removed old database cache!${nocolor}\n"
+			echo -e "${GREEN}Removed old database cache!${NOCOLOR}\n"
 
 			## wipe working dir
 			echo "Cleaning up residual files from working directory..."
 			sudo rm -rf ${tmp_dir}/plex*
-			echo -e "${green}Residual files cleared!${nocolor}\n"
+			echo -e "${GREEN}Residual files cleared!${NOCOLOR}\n"
 
 			goatthink -b -W 60 "Restore complete. Restarting Plex..."
 			sudo service plexmediaserver start
@@ -102,8 +102,8 @@ if [[ -f "${backup_dir}/snapshot_${backup_datetime}/${plex_backup_file}" ]]; the
 		exit
 	fi
 else
-	echo -e "\n${red}Backup not found.${nocolor} Listing available backups below:"
+	echo -e "\n${RED}Backup not found.${NOCOLOR} Listing available backups below:"
 	sudo find ${backup_dir} -name 'plex*.*'
-	echo -e "\nPlease ${yellow}rerun${nocolor} the script and enter a valid backup. Exiting..." | goatthink -b -W 60
+	echo -e "\nPlease ${YELLOW}rerun${NOCOLOR} the script and enter a valid backup. Exiting..." | goatthink -b -W 60
 	exit
 fi

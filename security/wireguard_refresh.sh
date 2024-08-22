@@ -19,7 +19,7 @@ if [ $new_wg_profile == "noarg" ]; then
     # if given no arguments, ask user for input
     echo
     sudo ls $wg_profile_src_dir | sed s:.conf:: | sort -u
-    echo -en "\nWhich ${orange}Wireguard Profile${nocolor} would you like to use? "
+    echo -en "\nWhich ${ORANGE}Wireguard Profile${NOCOLOR} would you like to use? "
     read new_wg_profile
 else
     # else, use given argument
@@ -33,7 +33,7 @@ sudo wg-quick down ${wg_service_name}
 echo
 
 # copy
-echo -e "Applying ${orange}${new_wg_profile}${nocolor} profile"
+echo -e "Applying ${ORANGE}${new_wg_profile}${NOCOLOR} profile"
 sudo cp ${wg_profile_src_dir}${new_wg_profile}.conf ${wg_profile_dst_dir}${wg_service_name}.conf
 echo
 

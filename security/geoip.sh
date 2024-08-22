@@ -14,7 +14,7 @@ echo
 geoip_arg=${1:-"f"}
 
 # formatting
-echo -en "${yellow}"
+echo -en "${YELLOW}"
 
 # print results
 region=$(curl --silent "https://ipinfo.io/region")
@@ -34,13 +34,13 @@ echo
 # VPN "check"
 to_check=Minnesota
 if [[ ${region} != *${to_check}* ]]; then
-    echo -en "${green}VPN Connected!"
+    echo -en "${GREEN}VPN Connected!"
 elif [[ ! -n ${region} ]]; then
-    echo -en "${orange}VPN Status Unknown; IPInfo Unreachable!"
+    echo -en "${ORANGE}VPN Status Unknown; IPInfo Unreachable!"
 else
-    echo -en "${red}VPN Disconnected!"
+    echo -en "${RED}VPN Disconnected!"
 fi
 
 # end formatting
-echo -e "${nocolor}"
+echo -e "${NOCOLOR}"
 echo

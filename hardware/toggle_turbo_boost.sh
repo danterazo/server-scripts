@@ -34,7 +34,7 @@ toggle_core_turbo() {
     elif [[ $1 -eq $enabled_state ]]; then
         disable_turbo
     else
-        echo -e "${orange}Unable to toggle${nocolor} Turbo Boost status"
+        echo -e "${ORANGE}Unable to toggle${NOCOLOR} Turbo Boost status"
     fi
 }
 
@@ -54,11 +54,11 @@ if [[ $mode != "report" && $mode != 3 && $mode != "r" ]]; then
     # verify turbo state
     new_turbo_state=$(sudo rdmsr -p0 0x${register})
     if [[ $new_turbo_state == $disabled_state ]]; then
-        echo -e "${red}Disabled${nocolor} Turbo Boost"
+        echo -e "${RED}Disabled${NOCOLOR} Turbo Boost"
     elif [[ $new_turbo_state == $enabled_state ]]; then
-        echo -e "${green}Enabled${nocolor} Turbo Boost"
+        echo -e "${GREEN}Enabled${NOCOLOR} Turbo Boost"
     else
-        echo -e "${orange}Unable to verify${nocolor} Turbo Boost status"
+        echo -e "${ORANGE}Unable to verify${NOCOLOR} Turbo Boost status"
     fi
     echo
 
@@ -66,11 +66,11 @@ if [[ $mode != "report" && $mode != 3 && $mode != "r" ]]; then
 else
     echo -e -n "Turbo Boost Status: "
     if [[ $curr_turbo_state -eq $disabled_state ]]; then
-        echo -e "${red}Disabled${nocolor}"
+        echo -e "${RED}Disabled${NOCOLOR}"
     elif [[ $curr_turbo_state -eq $enabled_state ]]; then
-        echo -e "${green}Enabled${nocolor}"
+        echo -e "${GREEN}Enabled${NOCOLOR}"
     else
-        echo -e "${orange}Unknown${nocolor}"
+        echo -e "${ORANGE}Unknown${NOCOLOR}"
     fi
     echo
 fi
