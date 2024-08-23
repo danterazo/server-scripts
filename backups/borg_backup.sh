@@ -37,7 +37,7 @@ borg create \
     ::$ARCHIVENAME \
     /home /etc /root /var /opt /srv /usr/local /self-hosted /ansible
 
-backup_exit=$?
+BACKUP_EXIT=$?
 
 ## prune
 info "Pruning Borg repository"
@@ -49,24 +49,24 @@ borg prune \
     --keep-weekly 2 \
     --keep-monthly 3
 
-prune_exit=$?
+PRUNE_EXIT=$?
 
 ## compact
 info "Compacting Borg repository"
 borg compact
 
-compact_exit=$?
+COMPACT_EXIT=$?
 
 # use highest exit code as global exit code
-global_exit=$((backup_exit > prune_exit ? backup_exit : prune_exit))
-global_exit=$((compact_exit > global_exit ? compact_exit : global_exit))
+GLOBAL_EXIT=$((BACKUP_EXIT > PRUNE_EXIT ? BACKUP_EXIT : PRUNE_EXIT))
+GLOBAL_EXIT=$((COMPACT_EXIT > GLOBAL_EXIT ? COMPACT_EXIT : GLOBAL_EXIT))
 
-if [ ${global_exit} -eq 0 ]; then
+if [ ${GLOBAL_EXIT} -eq 0 ]; then
     info "Backup, Prune, and Compact finished successfully"
-elif [ ${global_exit} -eq 1 ]; then
+elif [ ${GLOBAL_EXIT} -eq 1 ]; then
     info "Backup, Prune, and/or Compact finished with warnings"
 else
     info "Backup, Prune, and/or Compact finished with errors"
 fi
 
-exit ${global_exit}
+exit ${GLOBAL_EXIT}
