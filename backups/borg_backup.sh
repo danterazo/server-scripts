@@ -33,6 +33,7 @@ borg create \
     --exclude 'var/tmp/*' \
     --exclude '/self-hosted/nextcloud/backups' \
     --exclude '/self-hosted/nextcloud/data' \
+    --exclude '/home/dante/.cache/' \
     \
     ::$ARCHIVE_NAME \
     /home /etc /root /var /opt /srv /usr/local /self-hosted /ansible
