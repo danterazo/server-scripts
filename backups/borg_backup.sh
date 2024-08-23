@@ -11,8 +11,8 @@ export BORG_REPO=/borg-backup
 export BORG_PASSPHRASE=$(sudo cat /home/dante/.creds/borg)
 
 # archive name
-DATETIME=$(date +"%Y-%m-%d_%H-%M-%S")
-ARCHIVENAME="$HOSTNAME-system_$DATETIME"
+DATE_TIME=$(date +"%Y-%m-%d_%H-%M-%S")
+ARCHIVE_NAME="${HOSTNAME}-system_${DATE_TIME}"
 
 # error handling
 info() { printf "\n%s %s\n\n" "$(date)" "$*" >&2; }
@@ -34,7 +34,7 @@ borg create \
     --exclude '/self-hosted/nextcloud/backups' \
     --exclude '/self-hosted/nextcloud/data' \
     \
-    ::$ARCHIVENAME \
+    ::$ARCHIVE_NAME \
     /home /etc /root /var /opt /srv /usr/local /self-hosted /ansible
 
 BACKUP_EXIT=$?
