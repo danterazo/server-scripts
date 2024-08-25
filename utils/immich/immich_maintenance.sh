@@ -19,7 +19,7 @@ IMMICH_ADDR=$(sudo cat /home/dante/.creds/immich/immich-address)
 echo
 
 # delete untracked files from immich export
-UNTRACKED_FILE_EXPORT="${IMMICH_SCRIPT_PATH}/untracked.txt"
+UNTRACKED_FILE_EXPORT="untracked.txt"
 UNTRACKED_FILE_COUNT=$(sed -n "$=" ${UNTRACKED_FILE_EXPORT})
 CURRENT_LINE=1
 while IFS="" read -r p || [ -n "$p" ]
