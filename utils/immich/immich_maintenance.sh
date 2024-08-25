@@ -2,9 +2,6 @@
 # constants
 IMMICH_SCRIPT_PATH="/self-hosted/immich/scripts"
 
-# source python script venv
-source "${IMMICH_SCRIPT_PATH}/immich-py3/bin/activate"
-
 # retrieve secrets from host
 ADMIN_API_KEY=$(sudo cat /home/dante/.creds/immich/immich-maintenance-admin-api-key)
 USER_API_KEY=$(sudo cat /home/dante/.creds/immich/immich-maintenance-user-api-key)
@@ -12,7 +9,7 @@ IMMICH_ADDR=$(sudo cat /home/dante/.creds/immich/immich-address)
 
 # run script to delete offline/orphaned files (fully automated, no prompts)
 # script source: https://github.com/Thoroslives/immich_remove_offline_files
-python3 "${IMMICH_SCRIPT_PATH}/immich_remove_offline_files.py" \
+"${IMMICH_SCRIPT_PATH}/immich-py3/bin/python3" "${IMMICH_SCRIPT_PATH}/immich_remove_offline_files.py" \
 --no_prompt \
 --admin_apikey "${ADMIN_API_KEY}" \
 --user_apikey "${USER_API_KEY}" \
@@ -51,6 +48,3 @@ do
     fi
     
 done < ${UNTRACKED_FILE_EXPORT}
-
-# exit virtual environment
-deactivate
