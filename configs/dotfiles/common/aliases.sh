@@ -7,7 +7,7 @@ alias myip="curl https://ipinfo.io/ip"
 alias sn="sudo nano"
 alias sc="sudo cat"
 alias delete-empty="find . -type d -empty -print -delete"
-alias ramdisk="cd /tmp/ramdisk"
+alias ramdisk="cd /tmp/ramdisk && ls -al"
 
 # git
 alias gcm="git commit -m"
