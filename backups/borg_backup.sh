@@ -19,7 +19,7 @@ info() { printf "\n%s %s\n\n" "$(date)" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 ## backup
-info "Starting Borg backup"
+info "Starting Borg backup..."
 borg create \
     --filter ACME \
     --list \
@@ -41,7 +41,7 @@ borg create \
 BACKUP_EXIT=$?
 
 ## prune
-info "Pruning Borg repository"
+info "Pruning Borg repository..."
 borg prune \
     --list \
     --glob-archives '{hostname}-*' \
@@ -53,7 +53,7 @@ borg prune \
 PRUNE_EXIT=$?
 
 ## compact
-info "Compacting Borg repository"
+info "Compacting Borg repository..."
 borg compact
 
 COMPACT_EXIT=$?
