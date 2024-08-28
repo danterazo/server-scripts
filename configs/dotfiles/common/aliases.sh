@@ -6,7 +6,7 @@ alias ufwl="sudo cat /var/log/ufw.log" # ufw logs
 alias myip="curl https://ipinfo.io/ip"
 alias sn="sudo nano"
 alias sc="sudo cat"
-alias delete-empty="find . -type d -empty -print -delete"
+alias delete-empty="sudo find . -type d -empty -print -delete"
 alias ramdisk="cd /tmp/ramdisk && ls -al"
 
 # git
