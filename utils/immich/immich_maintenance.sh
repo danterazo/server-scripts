@@ -28,14 +28,16 @@ do
     OLD_PATH="${p}"
 
     # translate path from Docker to host machine
-    DOCKER_PHOTOS_ROOT="/usr/src/app/upload/"
-    HOST_PHOTOS_ROOT="/self-hosted/immich/photos/"
-    NEW_PATH=$(echo "${OLD_PATH}" | sed "s#${DOCKER_PHOTOS_ROOT}#${HOST_PHOTOS_ROOT}#")
+    #DOCKER_PHOTOS_ROOT="/usr/src/app/upload/"
+    #HOST_PHOTOS_ROOT="/self-hosted/immich/photos/"
+    #NEW_PATH=$(echo "${OLD_PATH}" | sed "s#${DOCKER_PHOTOS_ROOT}#${HOST_PHOTOS_ROOT}#")
 
     # delete file
-    echo -e "Deleting file (${CURRENT_LINE}/${UNTRACKED_FILE_COUNT}): ${NEW_PATH}"
+    # echo -e "Deleting file (${CURRENT_LINE}/${UNTRACKED_FILE_COUNT}): ${NEW_PATH}"
+    echo -e "Deleting file (${CURRENT_LINE}/${UNTRACKED_FILE_COUNT}): ${OLD_PATH}"
 
-    if rm -rf ${NEW_PATH}; then
+    #if dx rm -rf ${NEW_PATH}; then
+    if docker exec -it immich-server rm -rf ${OLD_PATH}; then
         # remove deleted file from export
         echo -e "Successfully deleted file! Removing from export...\n"
         sed -i "1d" "${UNTRACKED_FILE_EXPORT}"
