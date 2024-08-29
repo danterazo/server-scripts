@@ -6,7 +6,7 @@ set -ex
 sudo-timeout
 
 # adapter names
-ETHERNET=enp3s0f0
+ETHERNET=speed0
 WIREGUARD=wg0
 WIFI=wlan0
 
