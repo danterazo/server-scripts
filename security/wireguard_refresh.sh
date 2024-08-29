@@ -26,18 +26,16 @@ else
     NEW_WG_PROFILE=${1}
 fi
 
-# bring down VPN and deluge service
-echo -e "Stopping Deluge and Wireguard..."
-sudo service deluged stop
+# stop VPN
+echo -e "Stopping Wireguard..."
 sudo wg-quick down ${WG_NAME}
 echo
 
-# copy
+# copy config file
 echo -e "Applying ${ORANGE}${NEW_WG_PROFILE}${NOCOLOR} profile"
 sudo cp ${CONFIG_SRC}${NEW_WG_PROFILE}.conf ${CONFIG_DST}${WG_NAME}.conf
 echo
 
-# restore VPN and deluge
-echo -e "Starting Deluge and Wireguard..."
-sudo service deluged start
+# start VPN
+echo -e "Starting Wireguard..."
 sudo wg-quick up ${WG_NAME}
