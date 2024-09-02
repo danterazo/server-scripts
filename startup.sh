@@ -30,7 +30,7 @@ git -C /home/dante/scripts/ pull
 # done
 
 # perform Borg backup
-bbkp
+#bbkp
 
 # print daily wisdom
 goatthink -b -W 60 "It don't take a genius to spot a goat in a flock of sheep."
