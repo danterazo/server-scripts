@@ -72,5 +72,5 @@ export -f immich-clean
 cloudflare-ufw() { bash "${SCRIPTS_ROOT}/security/ufw_cloudflare.sh"; }
 export -f cloudflare-ufw
 
-bcrypt() { htpasswd -bnBC 12 "" "${1}" | cut -d : -f 2; }
+bcrypt() { htpasswd -bnBC 10 "" '${1}' | cut -d : -f 2; }
 export -f bcrypt
