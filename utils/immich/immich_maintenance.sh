@@ -37,7 +37,7 @@ do
     echo -e "Deleting file (${CURRENT_LINE}/${UNTRACKED_FILE_COUNT}): ${OLD_PATH}"
 
     #if dx rm -rf ${NEW_PATH}; then
-    if docker exec -it immich-server rm -rf ${OLD_PATH}; then
+    if docker exec -it immich-server rm ${OLD_PATH}; then
         # remove deleted file from export
         echo -e "Successfully deleted file! Removing from export...\n"
         sed -i "1d" "${UNTRACKED_FILE_EXPORT}"
