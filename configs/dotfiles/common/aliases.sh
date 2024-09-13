@@ -8,6 +8,7 @@ alias sn="sudo nano"
 alias sc="sudo cat"
 alias delete-empty="sudo find . -type d -empty -print -delete"
 alias ramdisk="cd /tmp/ramdisk && ls -al"
+alias itop="sudo intel_gpu_top"
 
 # git
 alias gcm="git commit -m"
