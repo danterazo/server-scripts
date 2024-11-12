@@ -20,6 +20,7 @@ sudo snap refresh
 
 # update rubygems packages
 sudo gem update
+sudo gem cleanup
 
 # update git repos
 git -C /home/dante/scripts/ pull
