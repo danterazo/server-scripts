@@ -154,3 +154,8 @@ export QMK_HOME="/home/dante/projects/qmk/firmware"
 # enable starship
 export STARSHIP_CONFIG="/home/dante/.config/starship/starship.toml"
 eval "$(starship init bash)"
+
+# pyenv
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
