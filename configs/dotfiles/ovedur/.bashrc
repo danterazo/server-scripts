@@ -123,6 +123,11 @@ fi
 # source machine-specific bashrc code
 # source /home/dante/scripts/config/$(hostname)/bashrc.sh
 
+# pyenv
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # rust
 . "$HOME/.cargo/env"
 
