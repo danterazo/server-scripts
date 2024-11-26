@@ -16,6 +16,7 @@ alias gcm="git commit -m"
 # docker general
 alias dcd="docker compose down"
 alias dcu="docker compose up -d"
+alias dlogs="docker logs -f"
 
 # docker services
 alias fail2ban="docker exec -t fail2ban fail2ban-client"
