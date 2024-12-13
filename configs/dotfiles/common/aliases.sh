@@ -10,6 +10,7 @@ alias delete-empty="sudo find . -type d -empty -print -delete"
 alias ramdisk="cd /tmp/ramdisk && ls -al"
 alias itop="sudo intel_gpu_top"
 alias startup="source ${SCRIPTS_ROOT}/startup.sh"
+alias czone="find . -type f -name '*Zone.Identifier' -delete" # clean zone.identifier files in WSL2 environment
 
 # git
 alias gcm="git commit -m"
