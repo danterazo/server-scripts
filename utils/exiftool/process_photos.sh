@@ -4,6 +4,8 @@
 ## scope: current working directory
 ## usage: use after importing (and renaming) photos from camera to Windows using "EOS Utility"
 
+# TODO: append "_RAW" to CR3 files
+
 # define arguments
 args=(
     # "file processed?" criteria
