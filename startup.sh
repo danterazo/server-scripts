@@ -1,6 +1,9 @@
 #!/bin/bash
 ### dante's system startup/update script
 
+# TODO: use this comment style elsewhere
+: 'system scripts'
+
 # sudo timeout trick
 sudo-timeout
 
