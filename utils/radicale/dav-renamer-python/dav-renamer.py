@@ -148,7 +148,7 @@ def rename_files(ext: str,
         # replace file name string contents using map
         # new_name: str = new_name
         for initial, replacement in extended_map.items().__reversed__():
-            new_name = new_name.replace(initial, replacement)
+            new_name = new_name.replace(initial, replacement).lower()
 
         # generate full file path w/ replace
         old_path: str = file_dict["ORIGINAL_FILEPATH"]
