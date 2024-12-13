@@ -27,9 +27,6 @@ dxs() { sudo docker exec -it ${1} /bin/sh; }
 export -f dxs
 
 # shell scripts
-startup() { bash "${SCRIPTS_ROOT}/startup.sh"; }
-export -f startup
-
 backup() { bash "${SCRIPTS_ROOT}/backups/backup.sh" ${1}; }
 export -f backup
 
