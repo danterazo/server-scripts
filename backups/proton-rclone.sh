@@ -25,6 +25,7 @@ do
             --exclude="*cache/" \
             --exclude="*database/" \
             --exclude="*postgres/" \
+            --exclude="*.venv/" \
             --config="${RCLONE_CONFIG}"
     echo -e "${GREEN}Successfully backed up ${i} to Proton Drive!${NOCOLOR}"
 done
