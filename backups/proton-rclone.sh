@@ -22,6 +22,7 @@ do
     rclone sync /self-hosted/${i} proton-drive:Starálfur/${i}/current \
             --backup-dir="proton-drive:Starálfur/${i}/archive/$(date -I)" \
             --exclude="*.git/" \
+            --exclude="*cache/" \
             --config="${RCLONE_CONFIG}"
     echo -e "${GREEN}Successfully backed up ${i} to Proton Drive!${NOCOLOR}"
 done
