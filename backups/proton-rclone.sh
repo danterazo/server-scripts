@@ -19,7 +19,7 @@ SERVICES=(
 for i in "${SERVICES[@]}"
 do
     echo -e "${ORANGE}Backing up ${BOLD}${ITALIC}${i}${NOFORMAT} to Proton Drive...${NOCOLOR}"
-    rclone sync /self-hosted/${i} proton-drive:Starálfur/${i}/current \
+    sudo rclone sync /self-hosted/${i} proton-drive:Starálfur/${i}/current \
             --backup-dir="proton-drive:Starálfur/${i}/archive/$(date -I)" \
             --exclude="*.git/" \
             --exclude="*cache/" \
