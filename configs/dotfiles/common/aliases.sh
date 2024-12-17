@@ -13,6 +13,7 @@ alias startup="source ${SCRIPTS_ROOT}/configs/dotfiles/startup.sh"
 alias update="source ${SCRIPTS_ROOT}/configs/dotfiles/update.sh"
 alias refresh="source ${SCRIPTS_ROOT}/configs/dotfiles/refresh.sh"
 alias czone="find . -type f -name '*Zone.Identifier' -delete" # clean zone.identifier files in WSL2 environment
+alias proton-sync="source ${SCRIPTS_ROOT}/backups/proton-rclone.sh"
 
 # git
 alias gcm="git commit -m"
