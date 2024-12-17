@@ -10,7 +10,8 @@ alias rm-empty-dirs="sudo find . -type d -empty -print -delete"
 alias ramdisk="cd /tmp/ramdisk && ls -al"
 alias itop="sudo intel_gpu_top"
 alias startup="source ${SCRIPTS_ROOT}/configs/dotfiles/startup.sh"
-alias update="source ${SCRIPTS_ROOT}/configs/dotfiles/updates.sh"
+alias update="source ${SCRIPTS_ROOT}/configs/dotfiles/update.sh"
+alias refresh="source ${SCRIPTS_ROOT}/configs/dotfiles/refresh.sh"
 alias czone="find . -type f -name '*Zone.Identifier' -delete" # clean zone.identifier files in WSL2 environment
 
 # git
