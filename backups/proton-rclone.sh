@@ -1,7 +1,7 @@
 #!/bin/bash
 
-: 'Dockge'
-#rclone sync /self-hosted/dockge proton-drive:Starálfur/Dockge/Current --backup-dir=proton-drive:Starálfur/Dockge/Archive/`date -I`
+: 'Setup'
+export RCLONE_CONFIG="/home/dante/.config/rclone/rclone.conf"
 
 : 'List Services to Back Up'
 SERVICES=(
