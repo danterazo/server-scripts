@@ -1,6 +1,6 @@
 #!/bin/bash
-## a collection of common constants
 
+: 'Terminal'
 # terminal colors
 export RED="\033[0;31m"
 export GREEN="\033[0;32m"
@@ -15,9 +15,13 @@ export UNDERLINE="\e[4m"
 export STRIKETHROUGH="\e[9m"
 export NOFORMAT="\e[0m"
 
+:'App Configs'
 # borg
 export BORGPATH="/backup"
 export BORGPASS=$(head -n 1 /home/dante/.creds/borg)
+
+# rclone
+export RCLONE_CONFIG="/home/dante/.config/rclone/rclone.conf"
 
 # ICAO
 export BloomingtonICAO="KBMG"
