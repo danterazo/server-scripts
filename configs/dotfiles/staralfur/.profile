@@ -25,10 +25,7 @@ fi
 export SCRIPTS_ROOT="/home/dante/scripts"
 
 # source common stuff
-source "${SCRIPTS_ROOT}/configs/dotfiles/common/aliases.sh"
-source "${SCRIPTS_ROOT}/configs/dotfiles/common/constants.sh"
-source "${SCRIPTS_ROOT}/configs/dotfiles/common/functions.sh"
-source "${SCRIPTS_ROOT}/configs/dotfiles/common/exports.sh"
+source "${SCRIPTS_ROOT}/configs/dotfiles/refresh.sh
 
 ## scala
 # >>> JVM installed by coursier >>>
