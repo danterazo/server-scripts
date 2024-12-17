@@ -10,20 +10,19 @@ verbose: bool = False
 
 
 # global defaults
-content_root: str = "/self-hosted/radicale/data/collections/collection-root/"
+content_root: str = "/self-hosted/radicale/data/collections/collection-root"
 uuid_pattern = compile(
     pattern=r'^[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$',
     flags=IGNORECASE
 )
 
-# TODO: move to git scripts folder instead of here
 # TODO: rename folders using props file values
-# TODO: prints for progress reports if verbose flag 'true'
+# TODO: prints for progress reports if verbose flag is True
 
 
 def rename_contacts(verbose: bool = False) -> None:
     # global contact config
-    contact_data_path: str = "/self-hosted/radicale/data/collections/collection-root/dante/contacts"
+    contact_data_path: str = f"{content_root}/dante/contacts"
     ext: str = "vcf"
     rename_map: dict[str, str] = {
         " ": "-",
@@ -55,7 +54,7 @@ def rename_contacts(verbose: bool = False) -> None:
 
 def rename_caldav(verbose: bool = False) -> None:
     # global calDAV config
-    data_root: str = "/self-hosted/radicale/data/collections/collection-root/dante"
+    data_root: str = f"{content_root}/dante"
     ext: str = "ics"
     rename_map: dict[str, str] = {
         " ": "_",
@@ -103,7 +102,9 @@ def get_file_list(ext: str, path: str = content_root) -> list[dict[str, str]]:
                     # if uuid_pattern.match(filename):
                     # read files line-by-line into a dictionary
                     content_dict: dict[str, str] = {"ORIGINAL_FILEPATH": filepath,
-                                                    "ORIGINAL_FILENAME": filename}
+                                                    "ORIGINAL_FILENAME": filename,
+                                                    "FN": "",
+                                                    "NICKNAME": ""}
                     for line in file:
                         # filter out non key/value pairs
                         try:
@@ -129,15 +130,12 @@ def rename_files(ext: str,
                  new_name_sources: list[str]) -> None:
     for file_dict in files_to_process:
         # retrieve data from dict
-        old_name: str = file_dict["UID"]
+        # old_name: str = file_dict["UID"]
+        old_name: str = file_dict["ORIGINAL_FILENAME"].split(".vcf")[0]
 
         # retrieve base for new name from dict
-        new_name: str = ""
-        for source in new_name_sources:
-            try:
-                new_name = file_dict[source]
-            except:
-                pass
+        potential_names_list: list[str] = [file_dict[x] for x in new_name_sources]
+        new_name: str = next(x for x in potential_names_list if x != "")
 
         # append filetype-specific information to replacement map/dict
         extended_map: dict[str, str] = rename_map.copy()
