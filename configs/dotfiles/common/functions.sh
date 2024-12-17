@@ -71,3 +71,9 @@ export -f cloudflare-ufw
 
 bcrypt() { htpasswd -bnBC 10 "" '${1}' | cut -d : -f 2; }
 export -f bcrypt
+
+# refresh() {
+#     for f in "~/scripts/configs/dotfiles/common/*.sh"; do source $f
+#         done; 
+# }
+# export -f refresh
