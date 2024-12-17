@@ -23,6 +23,9 @@ export BORGPASS=$(head -n 1 /home/dante/.creds/borg)
 # rclone
 export RCLONE_CONFIG="/home/dante/.config/rclone/rclone.conf"
 
+# python
+#PYENV_VERSION="3.13.0"
+
 # ICAO
 export BloomingtonICAO="KBMG"
 export MinneapolisICAO="KMSP"
