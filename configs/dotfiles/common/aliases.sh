@@ -19,6 +19,7 @@ alias gcm="git commit -m"
 alias dcd="docker compose down"
 alias dcu="docker compose up -d"
 alias dlogs="docker logs -f"
+alias dxi="docker exec -t" # run command inside container
 
 # docker services
 alias fail2ban="docker exec -t fail2ban fail2ban-client"
