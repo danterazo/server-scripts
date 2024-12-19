@@ -15,7 +15,7 @@ export UNDERLINE="\e[4m"
 export STRIKETHROUGH="\e[9m"
 export NOFORMAT="\e[0m"
 
-:'App Configs'
+: 'App Configs'
 # borg
 export BORGPATH="/backup"
 export BORGPASS=$(head -n 1 /home/dante/.creds/borg)

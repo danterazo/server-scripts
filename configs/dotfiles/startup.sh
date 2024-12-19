@@ -2,7 +2,7 @@
 ## dante's system startup/update script
 
 # install updates
-source /home/dante/scripts/configs/dotfiles/updates.sh
+source /home/dante/scripts/configs/dotfiles/update.sh
 
 # use custom startup scripts
 # for f in /home/dante/scripts/specific/$(hostname)/*.sh; do
