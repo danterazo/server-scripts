@@ -158,4 +158,4 @@ eval "$(starship init bash)"
 # pyenv
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv virtualenv-init -)"
