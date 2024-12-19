@@ -15,6 +15,9 @@ export UNDERLINE="\e[4m"
 export STRIKETHROUGH="\e[9m"
 export NOFORMAT="\e[0m"
 
+: 'Navigation'
+export SCRIPTS_ROOT="/home/dante/scripts/"
+
 : 'App Configs'
 # borg
 export BORGPATH="/backup"
