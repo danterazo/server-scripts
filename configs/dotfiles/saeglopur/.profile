@@ -39,3 +39,6 @@ export PATH="$PATH:/home/dante/.local/share/coursier/bin"
 
 # created by `pipx` on 2024-07-15 12:21:53
 export PATH="$PATH:/home/dante/.local/bin"
+
+# docker global
+export TZ="America/Chicago"

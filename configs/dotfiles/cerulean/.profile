@@ -29,3 +29,6 @@ source "${SCRIPTS_ROOT}/configs/dotfiles/refresh.sh"
 
 # pipx
 export PATH="$PATH:/home/dante/.local/bin"
+
+# docker global
+export TZ="America/Indiana/Indianapolis"
