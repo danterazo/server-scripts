@@ -20,8 +20,8 @@ export SCRIPTS_ROOT="/home/dante/scripts/"
 
 : 'App Configs'
 # borg
-export BORGPATH="/backup"
-export BORGPASS=$(head -n 1 /home/dante/.creds/borg)
+#export BORGPATH="/backup"
+#export BORGPASS=$(head -n 1 /home/dante/.creds/borg)
 
 # rclone
 export RCLONE_CONFIG="/home/dante/.config/rclone/rclone.conf"
