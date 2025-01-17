@@ -29,3 +29,4 @@ alias fail2ban="docker exec -t fail2ban fail2ban-client"
 alias occ="sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ" # nextcloud AIO container OCC
 alias immich-bkp="sudo docker exec -t immich_postgres pg_dumpall --clean --if-exists --username=postgres | gzip > /mnt/hdd-pool/app-data/immich/backups/manual/immich_backup_$(date -I).sql.gz"
 alias dawarich-bkp="sudo docker exec -t dawarich-db pg_dumpall --clean --if-exists --username=postgres | gzip > /mnt/hdd-pool/app-data/dawarich/backups/dawarich_backup_$(date -I).sql.gz"
+alias caddy-rf="sudo docker exec -t caddy sh -c 'caddy fmt --overwrite /etc/caddy/Caddyfile && caddy reload --config /etc/caddy/Caddyfile'"
