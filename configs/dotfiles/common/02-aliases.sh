@@ -22,6 +22,7 @@ alias gcm="git commit -m"
 alias dcd="docker compose down"
 alias dcu="docker compose up -d"
 alias dcb="docker compose up -d --build"
+alias dcr="docker compose down && docker compose up -d" # docker compose refresh
 alias dprune="docker system prune --all --force"
 alias dlogs="docker logs -f"
 alias dxi="docker exec -t" # run command inside container
