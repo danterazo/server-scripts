@@ -147,6 +147,7 @@ export PATH=$PATH:/usr/local/opt/tcl-tk/bin
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # qmk
 export QMK_HOME="/home/dante/projects/qmk/firmware"
@@ -159,3 +160,6 @@ eval "$(starship init bash)"
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
+
+# filen-cli
+#PATH=$PATH:~/.filen-cli/bin

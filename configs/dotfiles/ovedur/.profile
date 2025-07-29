@@ -42,3 +42,10 @@ export PATH="$PATH:/home/dante/.local/bin"
 
 # docker global
 export TZ="America/Chicago"
+
+# 1Password SSH
+alias ssh="/c/Windows/System32/OpenSSH/ssh.exe"
+
+
+# filen-cli
+PATH=$PATH:~/.filen-cli/bin
