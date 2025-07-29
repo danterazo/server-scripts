@@ -2,6 +2,9 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "todo-tree.tree.scanMode": "workspace",
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
   }
 }
