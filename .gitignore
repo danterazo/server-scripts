@@ -6,3 +6,6 @@ local/
 
 # residual
 nul
+
+# secrets
+*.secrets
