@@ -1,5 +1,5 @@
 # virtual environments
-*/.venv/
+*.venv/
 
 # local-only
 local/
@@ -7,5 +7,5 @@ local/
 # residual
 nul
 
-# secrets
+# secrets env files
 *.secrets
