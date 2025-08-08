@@ -12,4 +12,4 @@ immich-go upload from-google-photos \
 --exclude-extensions="CR3" \
 --overwrite \
 --time-zone="America/Indiana/Indianapolis" \
-"/mnt/h/Temp M2/Takeout - 2022-03-29 - Complete, No YT Music/Google Photos/"
+"/mnt/h/Temp M2/Google Photos/"
