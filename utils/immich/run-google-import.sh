@@ -9,6 +9,7 @@ immich-go upload from-google-photos \
 --include-unmatched \
 --include-untitled-albums \
 --include-archived \
+--exclude-extensions="cr3" \
 --exclude-extensions="CR3" \
 --overwrite \
 --time-zone="America/Indiana/Indianapolis" \
