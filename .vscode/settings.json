@@ -6,5 +6,11 @@
   },
   "[shellscript]": {
     "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+  },
+  "python.analysis.extraPaths": [
+    "utils/benchmarks/rocm"
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
   }
 }
